@@ -14,17 +14,17 @@ $ ./setup.sh
 ***
 ## Habilitar bloqueo numérico al iniciar sesión
  ```sh
-sudo -i
-xhost +SI:localuser:gdm
-su gdm -s /bin/bash
-gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'
+$ sudo -i
+$ xhost +SI:localuser:gdm
+$ su gdm -s /bin/bash
+$ gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'
 ```
 ***
 ## Habilitar o deshabilitar wayland en Ubuntu 20.04
 ```sh
-nano /etc/gdm3/custom.conf
+$ nano /etc/gdm3/custom.conf
 ```
 - Eliminar comentario en linea: WaylandEnable=false
 ```sh
-sudo systemctl restart gdm3
+$ sudo systemctl restart gdm3
 ```
