@@ -1,4 +1,5 @@
 #!/bin/bash
+
 BASE_DIR=$(dirname "$(readlink -f "$0")")
 
 source $BASE_DIR/lib/config.sh
@@ -15,7 +16,7 @@ PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
 
 COUNT=$((${DEPENDENCES_COUNT} + ${PACKAGES_COUNT} + ${REPOSITORIES_COUNT}))
 
-install_packages() {
+function install_packages() {
     bar::start
     message 'Activando respositorios ...'
     for repositories in ${REPOSITORIES_LIST}; do
@@ -24,7 +25,7 @@ install_packages() {
         bar::status_changed ${steps_done_repositories} ${COUNT}
         sleep 1
     done
-    success_message "Activación de repositorios terminada.\n"
+    success_message "Activación de repositorios terminada\n"
     message 'Iniciando instalación de dependencias ...'
     for dependence in ${DEPENDENCES_LIST}; do
         install_package ${dependence}
@@ -32,7 +33,7 @@ install_packages() {
         bar::status_changed ${steps_done_dependence} ${COUNT}
         sleep 1
     done
-    success_message "Instalación de dependencias terminada.\n"
+    success_message "Instalación de dependencias terminada\n"
     message 'Iniciando instalación de paquetes ...'
     for package in ${PACKAGES_LIST}; do
         install_package ${package}
@@ -40,6 +41,18 @@ install_packages() {
         bar::status_changed ${steps_done_package} ${COUNT}
         sleep 1
     done
-    success_message "Instalación de paquetes terminada.\n"
+    success_message "Instalación de paquetes terminada\n"
     bar::stop
+}
+
+
+function update_packages() {
+    message 'Actualizando paquetes del sistema ...'
+    update_upgrade
+    if [ $? -ne 0 ]; then
+        echo -e "Resolviendo errores de configuración para actualizar los paquetes del sistema"
+        fix_upgrade && update_upgrade || echo -e "Error al intentar resolver errores de configuración para actualizar los paquetes del sistema"
+    else
+        success_message "Actualización de paquetes terminada\n"
+    fi
 }
