@@ -7,3 +7,27 @@
 [submodule "theme/plata-theme"]
 	path = theme/plata-theme
 	url = https://gitlab.com/tista500/plata-theme.git
+[submodule "gnome/extensions/easy-screen-cast"]
+	path = gnome/extensions/easy-screen-cast
+	url = https://github.com/EasyScreenCast/EasyScreenCast.git
+[submodule "gnome/extensions/clipboard-indicator"]
+	path = gnome/extensions/clipboard-indicator
+	url = https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
+[submodule "gnome/extensions/screenshot-tool"]
+	path = gnome/extensions/screenshot-tool
+	url = https://github.com/OttoAllmendinger/gnome-shell-screenshot.git
+[submodule "gnome/extensions/dash-to-panel"]
+	path = gnome/extensions/dash-to-panel
+	url = https://github.com/home-sweet-gnome/dash-to-panel.git
+[submodule "gnome/extensions/desktop-icons"]
+	path = gnome/extensions/desktop-icons
+	url = https://gitlab.gnome.org/World/ShellExtensions/desktop-icons.git
+[submodule "gnome/extensions/simpler-off-menu"]
+	path = gnome/extensions/simpler-off-menu
+	url = https://gitlab.com/K3rcus/simpler-off-menu.git
+[submodule "gnome/extensions/gnome-shell-extensions"]
+	path = gnome/extensions/gnome-shell-extensions
+	url = https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
+[submodule "gnome/extensions/speed-meter"]
+	path = gnome/extensions/speed-meter
+	url = https://github.com/AlShakib/InternetSpeedMeter.git
