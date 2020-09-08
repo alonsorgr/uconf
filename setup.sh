@@ -1,4 +1,5 @@
 #!/bin/bash
+
 BASE_DIR=$(dirname "$(readlink -f "$0")")
 
 echo -e 'Inicializando, por favor, espere ...'
@@ -8,6 +9,7 @@ source $BASE_DIR/lib/helper.sh
 source $BASE_DIR/scripts/packages.sh
 source $BASE_DIR/scripts/theme.sh
 source $BASE_DIR/scripts/icons.sh
+source $BASE_DIR/scripts/drivers.sh
 
 clear
 
@@ -16,4 +18,5 @@ check_os_version
 #update_packages
 #install_packages
 #install_theme
-install_icons
+#install_icons
+install_logitech_k290_drivers
