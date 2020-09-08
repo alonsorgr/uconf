@@ -6,5 +6,5 @@ function install_icons() {
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' &> ${NULL}
     echo -e 'Configurando color de iconos de directorios a Papirus-Dark, por favor, espere ...'
     papirus-folders -C white --theme Papirus-Dark &> ${NULL}
-    success_message 'Instalación de tema de iconos terminada'
+    success_message 'Instalación de tema de iconos terminada\n'
 }

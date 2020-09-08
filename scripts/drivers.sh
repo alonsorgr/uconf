@@ -9,5 +9,5 @@ function install_logitech_k290_drivers() {
     sudo ./build.sh &> ${NULL}
     echo -e 'Instalando drivers, por favor, espere ...'
     sudo ./install.sh &> ${NULL}
-    success_message 'Instalación de controladores para teclado Logitech K290 terminada'
+    success_message 'Instalación de controladores para teclado Logitech K290 terminada\n'
 }

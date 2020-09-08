@@ -15,8 +15,8 @@ clear
 
 message "\nConfiguración personal de Ubuntu ${CURRENT_OS_VERSION}"
 check_os_version
-#update_packages
-#install_packages
-#install_theme
-#install_icons
+update_packages
+install_packages
+install_theme
+install_icons
 install_logitech_k290_drivers

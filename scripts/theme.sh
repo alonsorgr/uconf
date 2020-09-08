@@ -33,5 +33,5 @@ function install_theme() {
     echo -e 'Configurando el fondo de pantalla de inicio de sesión, por favor, espere ...'
     sudo ${BASE_DIR}/scripts/gdm.sh
 
-    success_message 'Instalación de tema GTK Plata terminada'
+    success_message 'Instalación de tema GTK Plata terminada\n'
 }
