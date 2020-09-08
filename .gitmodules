@@ -13,8 +13,8 @@
 [submodule "gnome/extensions/clipboard-indicator"]
 	path = gnome/extensions/clipboard-indicator
 	url = https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
-[submodule "gnome/extensions/screenshot"]
-	path = gnome/extensions/screenshot
+[submodule "gnome/extensions/screenshot-tool"]
+	path = gnome/extensions/screenshot-tool
 	url = https://github.com/OttoAllmendinger/gnome-shell-screenshot.git
 [submodule "gnome/extensions/dash-to-panel"]
 	path = gnome/extensions/dash-to-panel
@@ -28,3 +28,6 @@
 [submodule "gnome/extensions/gnome-shell-extensions"]
 	path = gnome/extensions/gnome-shell-extensions
 	url = https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
+[submodule "gnome/extensions/speed-meter"]
+	path = gnome/extensions/speed-meter
+	url = https://github.com/AlShakib/InternetSpeedMeter.git
