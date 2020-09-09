@@ -1,13 +1,10 @@
 #!/bin/bash
 
-BASE_DIR=$(dirname "$(readlink -f "$0")")
+# BASE_DIR=$(dirname "$(readlink -f "$0")")
 
-function install_logitech_k290_drivers() {
-    message 'Intsalación de controladores para teclado Logitech K290'
-    cd ${BASE_DIR}/drivers/k290-fnkeyctl/
-    echo -e 'Compilando drivers, por favor, espere ...'
-    sudo ./build.sh &> ${NULL}
-    echo -e 'Instalando drivers, por favor, espere ...'
-    sudo ./install.sh &> ${NULL}
-    success_message 'Instalación de controladores para teclado Logitech K290 terminada\n'
-}
+message 'Intsalación de controladores para teclado Logitech K290'
+cd ${BASE_DIR}/drivers/k290-fnkeyctl/
+call_command "sudo ./build.sh" "Compilando drivers FN key Logitech K290, por favor, espere ..." "Error al compilar los drivers FN key Logitech K290"
+call_command "sudo ./install.sh" "Instalando drivers FN key Logitech K290, por favor, espere ..." "Error al instalar los drivers FN key Logitech K290"
+success_message 'Instalación de controladores para teclado Logitech K290 terminada\n'
+cd ${BASE_DIR}

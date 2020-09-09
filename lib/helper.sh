@@ -10,51 +10,51 @@ function error_message() {
     echo -e "\033[0;31m$1\033[0m"
 }
 
-check_errors() {
+function question() {
+    if [[ $3 == -y ]]; then
+        $1
+    else
+        while true; do
+            read -p "$2" result
+            case ${result} in
+                [Ss]* ) $1; break;;
+                [Nn]* ) break;;
+                * ) echo "Por favor, conteste sí o no (S/n)";;
+            esac
+        done
+    fi
+}
+
+function check_errors() {
     if [ $? -ne 0 ]; then
         error_message "$1"
     fi
 }
 
-function check_os_version() {
-    if [ ${CURRENT_OS_VERSION} == ${REQUIRED_OS_VERSION} ]; then
-        success_message "Versión del sistema operativo correcta\n"
-        echo -e "Iniciando proceso de instalación ...\n"
-    else
-        error_message 'Versión del sistema operativo incorrecta'
-        echo 'Por favor, compruebe los requisitos de instalación'
-        exit
-    fi
-}
-
-function get_package_name() {
-    local version="($1-v.$(apt-cache show "$1" | grep Version | cut -d: -f2 | tr -d '[:space:]'))"
-    echo -e ${version}
+function package_info() {
+    echo -e "($1-v.$(apt-cache show "$1" | grep Version | cut -d: -f2 | tr -d '[:space:]'))"
 }
 
 function call_command() {
-    $1 &> ${NULL}
     echo -e "$2"
+    $1 &> ${NULL}
+    check_errors "$3"
 }
 
 function install_package() {
-    call_command "sudo apt-get install -y "$1"" "Instalando $(get_package_name "$1"), por favor, espere ..."
-    sleep 1
+    call_command "sudo apt-get install -y $1" "Instalando $(package_info "$1"), por favor, espere ..." "Error al instalar el paquete '$(package_info "$1")"
 }
 
 function enable_repository() {
-    call_command "sudo add-apt-repository -y ppa:"$1"" "Activando repositorio "$1", por favor, espere ..."
-    sleep 1
+    call_command "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", por favor, espere ..." "Error al activar el repositorio $1"
 }
 
-function fix_upgrade() {
-    call_command "sudo dpkg --configure -a" "Configurando dpkg, por favor, espere ..."
-    call_command "sudo apt-get install -f -y" "Resolución de dependencias de paquetes instalados, por favor, espere ..."
+function apt_update() {
+    call_command "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, por favor, espere ..." "Error al actualizar la lista de paquetes"
+    call_command "sudo apt-get upgrade -y" "Actualizando paquetes instalados, por favor, espere ..." "Error al actualizar los paquetes"
 }
 
-function update_upgrade() {
-    call_command "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, por favor, espere ..."
-    call_command "sudo apt-get upgrade -y" "Actualizando paquetes instalados, por favor, espere ..."
-    call_command "sudo apt autoremove -y" "Eliminando paquetes obsoletos, por favor, espere ..."
-    call_command "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..."
+function apt_clean() {
+    call_command "sudo apt autoremove -y" "Eliminando paquetes innecesarios, por favor, espere ..." "Error al eliminar paquetes innecesarios"
+    call_command "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..." "Error al limpiar el sistema"
 }

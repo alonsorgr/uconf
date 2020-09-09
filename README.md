@@ -2,13 +2,16 @@
 # Configuración de Ubuntu
 Configuración personal del entorno de trabajo para Ubuntu 20.04 LTS
 ## Requisitos
- - Instalación limpia de [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso?_ga=2.189067822.485950335.1599564112-573427031.1599564112)
- - [Git](https://git-scm.com/) installed and configured.
+Instalación limpia de [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso?_ga=2.189067822.485950335.1599564112-573427031.1599564112)
+```sh
+$ sudo apt install git
+$ sudo apt install curl
+```
 ***
 ## Instalación
 ```sh
 $ git clone --recursive https://github.com/alonsorgr/uconf.git ~/.uconf
-$ cd ~/.uconf
+$ cd ~/.uconf [-y] (Modo silencioso)
 $ ./setup.sh
 ```
 ***

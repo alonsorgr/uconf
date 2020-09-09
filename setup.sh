@@ -3,20 +3,17 @@
 BASE_DIR=$(dirname "$(readlink -f "$0")")
 
 echo -e 'Inicializando, por favor, espere ...'
+
 source $BASE_DIR/lib/params.sh
 source $BASE_DIR/lib/sources.sh
 source $BASE_DIR/lib/helper.sh
-source $BASE_DIR/scripts/packages.sh
-source $BASE_DIR/scripts/theme.sh
-source $BASE_DIR/scripts/icons.sh
-source $BASE_DIR/scripts/drivers.sh
 
-clear
+SCRIPTS='packages drivers theme icons'
 
-message "\nConfiguración personal de Ubuntu ${CURRENT_OS_VERSION}"
-check_os_version
-update_packages
-install_packages
-install_theme
-install_icons
-install_logitech_k290_drivers
+message "\nConfiguración personal de Ubuntu 20.04\n"
+
+[ "$1" == '-y' ] && quiet='-y' || quiet=''
+
+for script in ${SCRIPTS}; do
+    question "source $BASE_DIR/scripts/${script}.sh" "¿Desea ejecutar el script ${script}.sh? (S/n) " ${quiet}
+done
