@@ -11,8 +11,8 @@ $ sudo apt install curl
 ## Instalación
 ```sh
 $ git clone --recursive https://github.com/alonsorgr/uconf.git ~/.uconf
-$ cd ~/.uconf [-y] (Modo silencioso)
-$ ./setup.sh
+$ cd ~/.uconf
+$ ./setup.sh [-y] (Modo silencioso)
 ```
 ***
 ## Habilitar bloqueo numérico al iniciar sesión
