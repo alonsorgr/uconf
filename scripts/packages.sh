@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# BASE_DIR=$(dirname "$(readlink -f "$0")")
-
 REPOSITORIES_LIST=$(cat ${BASE_DIR}/config/repositories.cfg)
 REPOSITORIES_COUNT=$(echo ${REPOSITORIES_LIST} | wc -w)
 
