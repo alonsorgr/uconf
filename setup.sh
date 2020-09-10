@@ -12,6 +12,8 @@ SCRIPTS='packages drivers gnome-extensions theme icons'
 
 message "\nConfiguración personal de Ubuntu 20.04\n"
 
+module_update
+
 [ "$1" == '-y' ] && quiet='-y' || quiet=''
 
 for script in ${SCRIPTS}; do

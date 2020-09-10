@@ -58,3 +58,7 @@ function apt_clean() {
     call_command "sudo apt autoremove -y" "Eliminando paquetes innecesarios, por favor, espere ..." "Error al eliminar paquetes innecesarios"
     call_command "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..." "Error al limpiar el sistema"
 }
+
+function module_update() {
+    call_command "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
+}
