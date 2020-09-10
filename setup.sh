@@ -8,7 +8,7 @@ source $BASE_DIR/lib/params.sh
 source $BASE_DIR/lib/sources.sh
 source $BASE_DIR/lib/helper.sh $2
 
-SCRIPTS='packages drivers gnome-extensions theme icons'
+SCRIPTS='packages drivers gnome-extensions theme icons wayland'
 
 message "\nConfiguración personal de Ubuntu 20.04\n"
 

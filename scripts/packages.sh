@@ -24,19 +24,16 @@ for repositories in ${REPOSITORIES_LIST}; do
     enable_repository ${repositories}
     steps_done_repositories=$((${steps_done_repositories:-0}+1))
     bar::status_changed ${steps_done_repositories} ${COUNT}
-    sleep 1
 done
 for dependence in ${DEPENDENCES_LIST}; do
     install_package ${dependence}
     steps_done_dependence=$((${steps_done_dependence:-0}+1))
     bar::status_changed ${steps_done_dependence} ${COUNT}
-    sleep 1
 done
 for package in ${PACKAGES_LIST}; do
     install_package ${package}
     steps_done_package=$((${steps_done_package:-0}+1))
     bar::status_changed ${steps_done_package} ${COUNT}
-    sleep 1
 done
 bar::stop
 success_message 'Instalación de de paquetes terminada\n'
