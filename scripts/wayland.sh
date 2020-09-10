@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Title:Configuración de WayLand
+
 WAY_LAND_PATH='/etc/gdm3/custom.conf'
 
 message 'Configuración de WayLand'

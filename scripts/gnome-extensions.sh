@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Title:Extensiones de entorno de esctritorio GNOME
+
 USR_PATH='/usr/share/gnome-shell/extensions/'
 HOME_PATH='$HOME/.local/share/gnome-shell/extensions/'
 

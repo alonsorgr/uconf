@@ -66,3 +66,7 @@ function apt_clean() {
 function module_update() {
     execute "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
 }
+
+function get_title() {
+    cat $1 | grep Title: | cut -d ':' -f2
+}

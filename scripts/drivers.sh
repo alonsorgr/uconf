@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Title:Drivers FN key Logitech K290
+
 message 'Intsalación de controladores para teclado Logitech K290'
 cd ${BASE_DIR}/drivers/k290-fnkeyctl/
 execute "sudo ./build.sh" "Compilando drivers FN key Logitech K290, por favor, espere ..." "Error al compilar los drivers FN key Logitech K290"

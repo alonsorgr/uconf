@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Title:Instalación de paquetes APT
+
 REPOSITORIES_LIST=$(cat ${BASE_DIR}/config/repositories.cfg)
 REPOSITORIES_COUNT=$(echo ${REPOSITORIES_LIST} | wc -w)
 

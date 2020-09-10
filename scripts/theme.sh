@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Title:Tema GTK Plata
+
 message 'Intsalación de tema GTK Plata'
 execute "sudo rm -rf /usr/share/themes/{Plata,Plata-Compact,Plata-Lumine,Plata-Lumine-Compact,Plata-Noir,Plata-Noir-Compact}" "Eliminando versiones anteriores del tema GTK Plata, por favor, espere ..." "Error al eliminar versiones anteriores del tema GTK Plata"
 execute "${BASE_DIR}/theme/plata-theme/autogen.sh --prefix=/usr --with-selection_color=#bfbfbf --with-accent_color=#ffffff --with-suggestion_color=#cccccc" "Configurando colores del tema GTK, por favor, espere ..." "Error al configurar colores del tema GTK"
