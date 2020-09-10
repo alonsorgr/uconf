@@ -39,30 +39,30 @@ function package_info() {
     echo -e "($1-v.$(apt-cache show "$1" | grep Version | cut -d: -f2 | tr -d '[:space:]'))"
 }
 
-function call_command() {
+function execute() {
     echo -e "$2"
     [ "${debug}" == "--debug" ] && $1 || $1 &> ${NULL}
     check_errors "$3"
 }
 
 function install_package() {
-    call_command "sudo apt-get install -y $1" "Instalando $(package_info "$1"), por favor, espere ..." "Error al instalar el paquete '$(package_info "$1")"
+    execute "sudo apt-get install -y $1" "Instalando $(package_info "$1"), por favor, espere ..." "Error al instalar el paquete '$(package_info "$1")"
 }
 
 function enable_repository() {
-    call_command "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", por favor, espere ..." "Error al activar el repositorio $1"
+    execute "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", por favor, espere ..." "Error al activar el repositorio $1"
 }
 
 function apt_update() {
-    call_command "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, por favor, espere ..." "Error al actualizar la lista de paquetes"
-    call_command "sudo apt-get upgrade -y" "Actualizando paquetes instalados, por favor, espere ..." "Error al actualizar los paquetes"
+    execute "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, por favor, espere ..." "Error al actualizar la lista de paquetes"
+    execute "sudo apt-get upgrade -y" "Actualizando paquetes instalados, por favor, espere ..." "Error al actualizar los paquetes"
 }
 
 function apt_clean() {
-    call_command "sudo apt autoremove -y" "Eliminando paquetes innecesarios, por favor, espere ..." "Error al eliminar paquetes innecesarios"
-    call_command "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..." "Error al limpiar el sistema"
+    execute "sudo apt autoremove -y" "Eliminando paquetes innecesarios, por favor, espere ..." "Error al eliminar paquetes innecesarios"
+    execute "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..." "Error al limpiar el sistema"
 }
 
 function module_update() {
-    call_command "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
+    execute "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
 }
