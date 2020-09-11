@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Title:Tipografías de programador
+# Name:Tipografías de programador
 
 SRC_FONTS="${BASE_DIR}/fonts"
 DST_FONTS="$HOME/.local/share/fonts"
 FONTS_LIST=$(cat ${BASE_DIR}/config/fonts.cfg)
 
-message 'Intsalación de Tipografías de programador'
+message 'Intsalación de Tipografías'
 
 mkdir -p ${DST_FONTS}
 

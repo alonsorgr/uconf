@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Title:Tema GTK Plata
+# Name:Tema GTK Plata
 
 message 'Intsalación de tema GTK Plata'
 execute "sudo rm -rf /usr/share/themes/{Plata,Plata-Compact,Plata-Lumine,Plata-Lumine-Compact,Plata-Noir,Plata-Noir-Compact}" "Eliminando versiones anteriores del tema GTK Plata, por favor, espere ..." "Error al eliminar versiones anteriores del tema GTK Plata"

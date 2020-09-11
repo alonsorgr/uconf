@@ -67,6 +67,6 @@ function module_update() {
     execute "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
 }
 
-function get_title() {
-    cat $1 | grep Title: | cut -d ':' -f2
+function script_name() {
+    cat $1 | grep Name: | cut -d ':' -f2
 }

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Title:Configuración de WayLand
+# Name:Configuración de WayLand
 
-WAY_LAND_PATH='/etc/gdm3/custom.conf'
+GDM_CONF='/etc/gdm3/custom.conf'
 
 message 'Configuración de WayLand'
-execute "sudo sed -i s/#WaylandEnable=false/WaylandEnable=false/ ${WAY_LAND_PATH}" "Activando WayLand, por favor, espere ..." "Error al activar WayLand"
+execute "sudo sed -i s/#WaylandEnable=false/WaylandEnable=false/ ${GDM_CONF}" "Desactivando WayLand, por favor, espere ..." "Error al desactivar WayLand"
 success_message 'Configuración de WayLand terminada\n'

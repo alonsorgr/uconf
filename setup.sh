@@ -22,5 +22,5 @@ success_message 'Actualización de módulos terminada\n'
 [ "$1" == '-y' ] && quiet='-y' || quiet=''
 
 for script in ${SCRIPTS}; do
-    question "source $BASE_DIR/scripts/${script}.sh" "¿Desea ejecutar el script $(get_title $BASE_DIR/scripts/${script}.sh)? (S/n) " ${quiet}
+    question "source $BASE_DIR/scripts/${script}.sh" "¿Desea ejecutar el script $(script_name $BASE_DIR/scripts/${script}.sh)? (S/n) " ${quiet}
 done
