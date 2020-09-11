@@ -24,7 +24,7 @@ $ ./setup.sh
 $ ./setup.sh --help # Muestra la ayuda
 ```
 ```sh
-$ ./setup.sh --yes # Sí automático a las indicaciones.
+$ ./setup.sh --yes # Sí automático a las indicaciones
 ```
 ```sh
 $ ./setup.sh --debug # Explicar lo que se está haciendo
