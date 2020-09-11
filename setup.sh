@@ -31,6 +31,11 @@ function params() {
     fi
 }
 
+if [ "${BASE_DIR}" != "${PWD}" ]; then
+    error_message "Error: debe ejecutar el script desde el directorio ${BASE_DIR}"
+    exit 1
+fi
+
 params $1
 params $2
 
