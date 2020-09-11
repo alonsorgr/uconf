@@ -1,6 +1,6 @@
 #!/bin/bash
 
-debug="$1"
+verbose="$1"
 
 function message() {
     echo -e "\033[0;34m$1\033[0m"
@@ -41,7 +41,7 @@ function package_info() {
 
 function execute() {
     echo -e "$2"
-    [ "${debug}" == "--debug" ] && $1 || $1 &> ${NULL}
+    [ "${verbose}" == "--verbose" ] && $1 || $1 &> ${NULL}
     check_errors "$3"
 }
 

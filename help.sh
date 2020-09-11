@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 cat << EOF
 
 NOMBRE
@@ -13,10 +11,10 @@ SINOPSIS
 DESCRIPCIÓN
        Configura el sistema operativo a gusto personal
 
-       --quiet
-              instalación en modo silencioso
+       --yes
+              Sí automático a las indicaciones; asumir "sí" como respuesta a todas las solicitudes y ejecutar de forma no interactiva
 
-       --debug
-              ver la ejecuciónes de las órdenes del script
+       --verbose
+              explicar lo que se está haciendo
 
 EOF

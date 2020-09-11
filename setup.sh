@@ -11,14 +11,14 @@ function params() {
     fi
     if [ ${ARGS} -le 2 ]; then
         if [ ! -n "$1" ]; then
-            debug='' && quiet=''
+            verbose=''
         elif [ "$1" == "--help" ]; then
             ${BASE_DIR}/help.sh
             exit
-        elif [ "$1" == '--quiet' ]; then
-            quiet='-y'
-        elif [ "$1" == '--debug' ]; then
-            debug='--debug'
+        elif [ "$1" == "--yes" ]; then
+            yes='-y'
+        elif [ "$1" == '--verbose' ]; then
+            verbose='--verbose'
         else
             echo -e "Parámetro $1 no válido, por favor, consulte la ayuda"
             echo -e "Ayuda: ./setup --help"
@@ -37,7 +37,7 @@ params $2
 echo -e 'Inicializando, por favor, espere ...'
 
 source ${BASE_DIR}/lib/params.sh
-source ${BASE_DIR}/lib/helper.sh ${debug}
+source ${BASE_DIR}/lib/helper.sh ${verbose}
 
 message "\nConfiguración personal de Ubuntu ${OS_VERSION}\n"
 
@@ -52,8 +52,6 @@ SCRIPTS='icons'
 module_update
 success_message 'Actualización de módulos terminada\n'
 
-#[ "$1" == '-y' ] && quiet='-y' || quiet=''
-
 for script in ${SCRIPTS}; do
-    question "source $BASE_DIR/scripts/${script}.sh" "¿Desea ejecutar el script $(script_name $BASE_DIR/scripts/${script}.sh)? (S/n) " ${quiet}
+    question "source $BASE_DIR/scripts/${script}.sh" "¿Desea ejecutar el script $(script_name $BASE_DIR/scripts/${script}.sh)? (S/n) " "${yes}"
 done
