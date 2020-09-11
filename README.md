@@ -32,7 +32,7 @@ $ ./setup.sh --debug --quiet
 ```
 ***
 ## Incluye
-- ## Controladores teclado Logitech K290 para configuración de la tecla FN
+- ### Controladores teclado Logitech K290 para configuración de la tecla FN
   - https://github.com/alonsorgr/k290-fnkeyctl
 
 - ### Tipografías:
