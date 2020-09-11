@@ -10,6 +10,8 @@ PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
 
 COUNT=$((${REPOSITORIES_COUNT} + ${PACKAGES_COUNT}))
 
+GOOGLE_CHROME_DEB='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+
 message 'Actualizando paquetes instalados en el sistema'
 
 apt_update
@@ -31,6 +33,15 @@ for package in ${PACKAGES_LIST}; do
 done
 bar::stop
 success_message 'Instalación de de paquetes terminada\n'
+
+message 'Instalación de Google Chrome'
+
+temp="$(mktemp)"
+execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, por favor, espere ..." "Error al descargar Google Chrome estable"
+execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, por favor, espere ..." "Error al instalar Google Chrome estable"
+execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales Google Chrome estable"
+
+success_message 'Instalación de Google Chrome terminada\n'
 
 message 'Eliminando paquetes obsoletos del sistema'
 
