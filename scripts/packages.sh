@@ -11,6 +11,7 @@ PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
 COUNT=$((${REPOSITORIES_COUNT} + ${PACKAGES_COUNT}))
 
 GOOGLE_CHROME_DEB='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+VS_CODE_DEB='https://update.code.visualstudio.com/latest/linux-deb-x64/stable'
 
 message 'Actualizando paquetes instalados en el sistema'
 
@@ -37,11 +38,21 @@ success_message 'Instalación de de paquetes terminada\n'
 message 'Instalación de Google Chrome'
 
 temp="$(mktemp)"
-execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, por favor, espere ..." "Error al descargar Google Chrome estable"
-execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, por favor, espere ..." "Error al instalar Google Chrome estable"
-execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales Google Chrome estable"
+execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, por favor, espere ..." "Error al descargar google chrome estable"
+execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, por favor, espere ..." "Error al instalar google chrome estable"
+execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales google chrome estable"
 
 success_message 'Instalación de Google Chrome terminada\n'
+
+message 'Instalación de Visual Studio Code'
+
+temp="$(mktemp)"
+execute "curl -sL -o ${temp} ${VS_CODE_DEB}" "Descargando visual studio code, por favor, espere ..." "Error al descargar visual studio code"
+execute "sudo dpkg -i ${temp}" "Instalando visual studio code, por favor, espere ..." "Error al instalar visual studio code"
+execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales visual studio code"
+execute "code --install-extension Shan.code-settings-sync" "Instalando extensión settings sync, por favor, espere ..." "Error al instalar la extension settings sync"
+
+success_message 'Instalación de visual studio code terminada\n'
 
 message 'Eliminando paquetes obsoletos del sistema'
 
