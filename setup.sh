@@ -1,10 +1,6 @@
 #!/bin/bash
 
-shopt -s extdebug
-
 BASE_DIR=$(dirname "$(readlink -f "$0")")
-
-echo -e 'Inicializando, por favor, espere ...'
 
 ARGS=$#
 
@@ -14,13 +10,19 @@ function params() {
         exit
     fi
     if [ ${ARGS} -le 2 ]; then
-        if [ "$1" == "--help" ]; then
+        if [ ! -n "$1" ]; then
+            debug='' && quiet=''
+        elif [ "$1" == "--help" ]; then
             ${BASE_DIR}/help.sh
             exit
         elif [ "$1" == '--quiet' ]; then
             quiet='-y'
         elif [ "$1" == '--debug' ]; then
             debug='--debug'
+        else
+            echo -e "Parámetro $1 no válido, por favor, consulte la ayuda"
+            echo -e "Ayuda: ./setup --help"
+            exit 1 
         fi 
     else
         echo -e "El número de argumentos no es válido, por favor, consulte la ayuda"
@@ -31,6 +33,8 @@ function params() {
 
 params $1
 params $2
+
+echo -e 'Inicializando, por favor, espere ...'
 
 source ${BASE_DIR}/lib/params.sh
 source ${BASE_DIR}/lib/helper.sh ${debug}
