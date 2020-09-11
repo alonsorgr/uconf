@@ -17,4 +17,7 @@ DESCRIPCIÓN
        --verbose
               explicar lo que se está haciendo
 
+       --help
+              Muestra la Ayuda
+
 EOF

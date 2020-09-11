@@ -20,9 +20,15 @@ $ ./setup.sh
 ***
 ## Ayuda
 
-- Mostrar ayuda: `$ ./setup.sh --help`
-- Modo silencioso: `$ ./setup.sh --quiet`
-- Explicar lo que se está haciendo: `$ ./setup.sh --debug`
+```sh
+$ ./setup.sh --help # Muestra la ayuda
+```
+```sh
+$ ./setup.sh --yes # Sí automático a las indicaciones.
+```
+```sh
+$ ./setup.sh --debug # Explicar lo que se está haciendo
+```
 
 Se pueden utilizar ambas
 
