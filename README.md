@@ -38,23 +38,27 @@ $ ./setup.sh --debug --quiet
 ## Incluye
 - Controladores teclado Logitech K290 para configuración de la tecla FN
   - https://github.com/alonsorgr/k290-fnkeyctl
+
 - Tipografías:
   - Fira Code
   - Input Mono
   - Mononoki
   - Nerd Fonts
   - Powerline Fonts
+
 - Tema GTK Plata personalizado
   - https://gitlab.com/tista500/plata-theme
   - Colores:
-    - selection='#bfbfbf'
-    - accent='#ffffff'
-    - suggestion='#cccccc'
+    - ```selection='#bfbfbf''```
+    - ```accent='#ffffff'```
+    - ```suggestion='#cccccc'```
 - GDM
   - Color de fondo de pantalla='#080808'
   - Desactivado WayLand
+
 - Iconos Papirus
   - https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+  
 - Extensiones GNOME
   - Clipboard Indicator
   - Dash To Panel
