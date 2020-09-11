@@ -55,6 +55,7 @@ temp="$(mktemp)"
 execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, por favor, espere ..." "Error al descargar google chrome estable"
 execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, por favor, espere ..." "Error al instalar google chrome estable"
 execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales google chrome estable"
+rm -rf ${temp} &> ${NULL}
 
 success_message 'Instalación de Google Chrome terminada\n'
 
@@ -65,6 +66,7 @@ execute "curl -sL -o ${temp} ${VS_CODE_DEB}" "Descargando visual studio code, po
 execute "sudo dpkg -i ${temp}" "Instalando visual studio code, por favor, espere ..." "Error al instalar visual studio code"
 execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales visual studio code"
 execute "code --install-extension Shan.code-settings-sync" "Instalando extensión settings sync, por favor, espere ..." "Error al instalar la extension settings sync"
+rm -rf ${temp} &> ${NULL}
 
 success_message 'Instalación de visual studio code terminada\n'
 
