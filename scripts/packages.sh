@@ -2,6 +2,8 @@
 
 # Name:Instalación de paquetes APT
 
+SNAP_PACKAGES='snap-store gtk-common-themes gnome-3-34-1804 core18'
+
 REPOSITORIES_LIST=$(cat ${BASE_DIR}/config/repositories.cfg)
 REPOSITORIES_COUNT=$(echo ${REPOSITORIES_LIST} | wc -w)
 
@@ -18,6 +20,18 @@ message 'Actualizando paquetes instalados en el sistema'
 apt_update
 
 success_message 'Actualización de de paquetes terminada\n'
+
+if dpkg -s snapd >/dev/null 2>&1; then
+    message 'Eliminar Snap del sistema'
+
+    for snap in ${SNAP_PACKAGES}; do
+        execute "sudo snap remove ${snap}" "Eliminando ${snap}, por favor, espere ..." "Error al eliminar el paquete ${snap}"
+    done
+
+    execute "sudo apt -y purge snapd" "Eliminando snap del sistema, por favor, espere ..." "Error al eliminar snap del sistema"
+
+    success_message 'Eliminación de Snap terminada\n'
+fi
 
 message 'Iniciando instalación de paquetes'
 
