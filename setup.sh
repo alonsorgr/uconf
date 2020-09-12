@@ -13,7 +13,7 @@ function params() {
         if [ ! -n "$1" ]; then
             verbose=''
         elif [ "$1" == "--help" ]; then
-            ${BASE_DIR}/help.sh
+            less ${BASE_DIR}/help
             exit
         elif [ "$1" == "--yes" ]; then
             yes='-y'

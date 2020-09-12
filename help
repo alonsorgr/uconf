@@ -1,6 +1,3 @@
-#!/bin/bash
-
-cat << EOF
 
 NOMBRE
        setup - ejecutable de configuración de Ubuntu
@@ -19,5 +16,3 @@ DESCRIPCIÓN
 
        --help
               Muestra la Ayuda
-
-EOF
