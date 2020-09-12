@@ -16,8 +16,6 @@ CLIPBOARD_INDICATOR_DST="${PREFIX_DST}/clipboard-indicator@tudmotu.com"
 SCREENSHOT_TOOL_DST="${PREFIX_DST}/gnome-shell-screenshot@ttll.de"
 SIMPLER_OFF_MENU_DST="${PREFIX_DST}/SimplerOffMenu.kerkus@pm.me"
 
-
-
 function _install() {
     local temp="$(mktemp -d)"
     execute "git clone $1 ${temp}" "Descargándo extensión $2, por favor, espere ..." "Error al descargar la extensión $2"
@@ -28,12 +26,25 @@ function _install() {
 
 function _clone() {
     [ -d $2 ] && execute "rm -rf $2" "Eliminando instalación anterior de $3, por favor, espere ..." "Error al eliminar la instalación anterior de la extensión $3"
-    execute "git clone $1 $2" "Descargando e instalando $3, por vafor, espere ..." "Error al descargar e instalar la extensión $3"
+    execute "git clone $1 $2" "Descargando e instalando $3, por favor, espere ..." "Error al descargar e instalar la extensión $3"
 }
 
-#_clone ${CLIPBOARD_INDICATOR_URL} ${CLIPBOARD_INDICATOR_DST} "Clipboard Indicator"
-#_install ${DASH_TO_PANEL_URL} "Dash To Panel"
-#_install ${EASY_SCREEN_CAST_URL} "Easy Screen Cast"
-#_install ${SCREENSHOT_URL} "Screenshot Tool"
-#cp -r "${SCREENSHOT_TOOL_CONFIG}"/* "${SCREENSHOT_TOOL_DST}"
-#_clone ${SIMPLER_OF_MENU_URL} ${SIMPLER_OFF_MENU_DST} "Simpler Off Menu"
+function _init() {
+    execute "gnome-extensions enable $1" "Inicializando extensión $2, por favor, espere ..." "Error al inicializar la extensión $2"
+}
+message 'Instalación de extensiones de GNOME'
+
+_clone ${CLIPBOARD_INDICATOR_URL} ${CLIPBOARD_INDICATOR_DST} "Clipboard Indicator"
+_init 'clipboard-indicator@tudmotu.com' 'Clipboard Indicator'
+_install ${DASH_TO_PANEL_URL} "Dash To Panel"
+_init 'dash-to-panel@jderose9.github.com' 'Dash To Panel'
+_install ${EASY_SCREEN_CAST_URL} "Easy Screen Cast"
+_init 'EasyScreenCast@iacopodeenosee.gmail.com' 'Easy Screen Cast'
+_install ${SCREENSHOT_URL} "Screenshot Tool"
+_init 'gnome-shell-screenshot@ttll.de' 'Screenshot Tool'
+execute "cp -r "${SCREENSHOT_TOOL_CONFIG}"/* "${SCREENSHOT_TOOL_DST}"" "Aplicando traducciones al español a Screenshot Tool, por favor, espere ..." "Error al aplicar las traducciones a Screenshot Tool"
+_clone ${SIMPLER_OF_MENU_URL} ${SIMPLER_OFF_MENU_DST} "Simpler Off Menu"
+_init 'SimplerOffMenu.kerkus@pm.me' 'Simpler Off Menu'
+_init 'user-theme@gnome-shell-extensions.gcampax.github.com' 'User Themes'
+
+success_message 'Instalación de extensiones de GNOME terminada\n'
