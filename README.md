@@ -27,14 +27,14 @@ $ ./setup.sh --help # Muestra la ayuda
 $ ./setup.sh --yes # Sí automático a las indicaciones
 ```
 ```sh
-$ ./setup.sh --debug # Explicar lo que se está haciendo
+$ ./setup.sh --verbose # Explicar lo que se está haciendo
 ```
 
 Se pueden utilizar ambas
 
 ```sh
-$ ./setup.sh --quiet --debug
-$ ./setup.sh --debug --quiet
+$ ./setup.sh --yes --verbose
+$ ./setup.sh --verbose --yes
 ```
 ***
 ## Incluye
