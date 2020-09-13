@@ -56,8 +56,8 @@ success_message "Intslación de dependencia $(package_info "curl") terminada\n"
 
 source ${BASE_DIR}/lib/sources.sh
 
-#SCRIPTS='packages drivers gnome-extensions theme icons wayland fonts dconf'
-SCRIPTS='dconf'
+SCRIPTS='packages drivers gnome-extensions theme icons wayland fonts dconf sakura'
+# SCRIPTS=''
 
 module_update
 success_message 'Actualización de módulos terminada\n'
