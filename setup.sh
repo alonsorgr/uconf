@@ -9,21 +9,26 @@ function params() {
         echo -e "La ayuda solo se puede solicitar con un parámetro enla lísta de argumentos"
         exit
     fi
+    if [ ${ARGS} -gt 2 ]; then
+        echo -e "El número de argumentos no es válido, por favor, consulte la ayuda"
+        echo -e "Ayuda: ./setup --help"
+        exit 1
+    fi
     if [ ${ARGS} -le 2 ]; then
-        if [ ! -n "$1" ]; then
-            verbose=''
-        elif [ "$1" == "--help" ]; then
-            less ${BASE_DIR}/help
-            exit
-        elif [ "$1" == "--yes" ]; then
-            yes='-y'
-        elif [ "$1" == '--verbose' ]; then
-            verbose='--verbose'
-        else
-            echo -e "Parámetro $1 no válido, por favor, consulte la ayuda"
-            echo -e "Ayuda: ./setup --help"
-            exit 1 
-        fi 
+        if [ -n "$1" ]; then
+            if [ "$1" == "--help" ]; then
+                less ${BASE_DIR}/help
+                exit
+            elif [ "$1" == "--yes" ]; then
+                yes='-y'
+            elif [ "$1" == '--verbose' ]; then
+                verbose='--verbose'
+            else
+                echo -e "Parámetro $1 no válido, por favor, consulte la ayuda"
+                echo -e "Ayuda: ./setup --help"
+                exit 1 
+            fi
+        fi
     else
         echo -e "El número de argumentos no es válido, por favor, consulte la ayuda"
         echo -e "Ayuda: ./setup --help"
@@ -51,8 +56,8 @@ success_message "Intslación de dependencia $(package_info "curl") terminada\n"
 
 source ${BASE_DIR}/lib/sources.sh
 
-SCRIPTS='packages drivers gnome-extensions theme icons wayland fonts dconf'
-# SCRIPTS=''
+#SCRIPTS='packages drivers gnome-extensions theme icons wayland fonts dconf'
+SCRIPTS='dconf'
 
 module_update
 success_message 'Actualización de módulos terminada\n'
