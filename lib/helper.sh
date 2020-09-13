@@ -83,13 +83,9 @@ function script_name()
     cat $1 | grep Name: | cut -d ':' -f2
 }
 
-backup_and_link()
+function backup_and_link()
 {
-    if [ -n "$2" ]; then
-        local file=$HOME/$2/$1
-    else
-        local file=$HOME/$1
-    fi
+    [ -n "$2" ] && local file=$HOME/$2/$1 || local file=$HOME/$1
     if [ -e ${file} ]; then
         if [ ! -e ${file}.old ]; then
             if [ "$(realpath $PWD/config/$1)" != "$(realpath ${file})" ]; then
@@ -99,5 +95,5 @@ backup_and_link()
         rm -rf ${file}
     fi
     local path=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-    ln -sf $path ${file}
+    ln -sf ${path} ${file}
 }
