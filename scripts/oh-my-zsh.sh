@@ -54,4 +54,4 @@ fi
 
 backup_and_link '.zshrc'
 
-success_message 'Instalación de configuración de zsh Oh My ZSH\n'
+success_message 'Instalación de configuración de zsh Oh My ZSH terminada\n'
