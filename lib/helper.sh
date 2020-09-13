@@ -46,25 +46,25 @@ function execute() {
 }
 
 function install_package() {
-    execute "sudo apt-get install -y $1" "Instalando $(package_info "$1"), por favor, espere ..." "Error al instalar el paquete '$(package_info "$1")"
+    execute "sudo apt-get install -y $1" "Instalando $(package_info "$1"), espere ..." "Error al instalar el paquete '$(package_info "$1")"
 }
 
 function enable_repository() {
-    execute "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", por favor, espere ..." "Error al activar el repositorio $1"
+    execute "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", espere ..." "Error al activar el repositorio $1"
 }
 
 function apt_update() {
-    execute "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, por favor, espere ..." "Error al actualizar la lista de paquetes"
-    execute "sudo apt-get upgrade -y" "Actualizando paquetes instalados, por favor, espere ..." "Error al actualizar los paquetes"
+    execute "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, espere ..." "Error al actualizar la lista de paquetes"
+    execute "sudo apt-get upgrade -y" "Actualizando paquetes instalados, espere ..." "Error al actualizar los paquetes"
 }
 
 function apt_clean() {
-    execute "sudo apt autoremove -y" "Eliminando paquetes innecesarios, por favor, espere ..." "Error al eliminar paquetes innecesarios"
-    execute "sudo apt autoclean -y" "Limpiando el sistema, por favor, espere ..." "Error al limpiar el sistema"
+    execute "sudo apt autoremove -y" "Eliminando paquetes innecesarios, espere ..." "Error al eliminar paquetes innecesarios"
+    execute "sudo apt autoclean -y" "Limpiando el sistema, espere ..." "Error al limpiar el sistema"
 }
 
 function module_update() {
-    execute "git submodule update --init --recursive" "Actualizando múdulos, por favor, espere ..." "Error al actualizar los módulos"
+    execute "git submodule update --init --recursive" "Actualizando múdulos, espere ..." "Error al actualizar los módulos"
 }
 
 function script_name() {

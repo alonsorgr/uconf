@@ -18,19 +18,19 @@ SIMPLER_OFF_MENU_DST="${PREFIX_DST}/SimplerOffMenu.kerkus@pm.me"
 
 function _install() {
     local temp="$(mktemp -d)"
-    execute "git clone $1 ${temp}" "Descargándo extensión $2, por favor, espere ..." "Error al descargar la extensión $2"
-    execute "make -C ${temp}" "Configurándo extensión $2, por favor, espere ..." "Error al configurar la extensión $2"
-    execute "make install -C ${temp}" "Instalando extensión, por favor, espere ..." "Error al instalar la extensión $2"
+    execute "git clone $1 ${temp}" "Descargándo extensión $2, espere ..." "Error al descargar la extensión $2"
+    execute "make -C ${temp}" "Configurándo extensión $2, espere ..." "Error al configurar la extensión $2"
+    execute "make install -C ${temp}" "Instalando extensión, espere ..." "Error al instalar la extensión $2"
     rm -rf ${temp}
 }
 
 function _clone() {
-    [ -d $2 ] && execute "rm -rf $2" "Eliminando instalación anterior de $3, por favor, espere ..." "Error al eliminar la instalación anterior de la extensión $3"
-    execute "git clone $1 $2" "Descargando e instalando $3, por favor, espere ..." "Error al descargar e instalar la extensión $3"
+    [ -d $2 ] && execute "rm -rf $2" "Eliminando instalación anterior de $3, espere ..." "Error al eliminar la instalación anterior de la extensión $3"
+    execute "git clone $1 $2" "Descargando e instalando $3, espere ..." "Error al descargar e instalar la extensión $3"
 }
 
 function _init() {
-    execute "gnome-extensions enable $1" "Inicializando extensión $2, por favor, espere ..." "Error al inicializar la extensión $2"
+    execute "gnome-extensions enable $1" "Inicializando extensión $2, espere ..." "Error al inicializar la extensión $2"
 }
 message 'Instalación de extensiones de GNOME'
 
@@ -42,7 +42,7 @@ _install ${EASY_SCREEN_CAST_URL} "Easy Screen Cast"
 _init 'EasyScreenCast@iacopodeenosee.gmail.com' 'Easy Screen Cast'
 _install ${SCREENSHOT_URL} "Screenshot Tool"
 _init 'gnome-shell-screenshot@ttll.de' 'Screenshot Tool'
-execute "cp -r "${SCREENSHOT_TOOL_CONFIG}"/* "${SCREENSHOT_TOOL_DST}"" "Aplicando traducciones al español a Screenshot Tool, por favor, espere ..." "Error al aplicar las traducciones a Screenshot Tool"
+execute "cp -r "${SCREENSHOT_TOOL_CONFIG}"/* "${SCREENSHOT_TOOL_DST}"" "Aplicando traducciones al español a Screenshot Tool, espere ..." "Error al aplicar las traducciones a Screenshot Tool"
 _clone ${SIMPLER_OF_MENU_URL} ${SIMPLER_OFF_MENU_DST} "Simpler Off Menu"
 _init 'SimplerOffMenu.kerkus@pm.me' 'Simpler Off Menu'
 _init 'user-theme@gnome-shell-extensions.gcampax.github.com' 'User Themes'

@@ -10,7 +10,7 @@ function params() {
         exit
     fi
     if [ ${ARGS} -gt 2 ]; then
-        echo -e "El número de argumentos no es válido, por favor, consulte la ayuda"
+        echo -e "El número de argumentos no es válido, consulte la ayuda"
         echo -e "Ayuda: ./setup --help"
         exit 1
     fi
@@ -24,13 +24,13 @@ function params() {
             elif [ "$1" == '--verbose' ]; then
                 verbose='--verbose'
             else
-                echo -e "Parámetro $1 no válido, por favor, consulte la ayuda"
+                echo -e "Parámetro $1 no válido, consulte la ayuda"
                 echo -e "Ayuda: ./setup --help"
                 exit 1 
             fi
         fi
     else
-        echo -e "El número de argumentos no es válido, por favor, consulte la ayuda"
+        echo -e "El número de argumentos no es válido, consulte la ayuda"
         echo -e "Ayuda: ./setup --help"
         exit 1
     fi
@@ -44,14 +44,14 @@ fi
 params $1
 params $2
 
-echo -e 'Inicializando, por favor, espere ...'
+echo -e 'Inicializando, espere ...'
 
 source ${BASE_DIR}/lib/params.sh
 source ${BASE_DIR}/lib/helper.sh ${verbose}
 
 message "\nConfiguración personal de Ubuntu ${OS_VERSION}\n"
 
-execute "sudo apt install curl -y" "Instalando dependencia $(package_info "curl"), por favor, espere ..." "Error al instalar la dependencia $(package_info "curl")"
+execute "sudo apt install curl -y" "Instalando dependencia $(package_info "curl"), espere ..." "Error al instalar la dependencia $(package_info "curl")"
 success_message "Intslación de dependencia $(package_info "curl") terminada\n"
 
 source ${BASE_DIR}/lib/sources.sh

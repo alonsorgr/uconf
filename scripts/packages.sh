@@ -25,10 +25,10 @@ if dpkg -s snapd >/dev/null 2>&1; then
     message 'Eliminar Snap del sistema'
 
     for snap in ${SNAP_PACKAGES}; do
-        execute "sudo snap remove ${snap}" "Eliminando ${snap}, por favor, espere ..." "Error al eliminar el paquete ${snap}"
+        execute "sudo snap remove ${snap}" "Eliminando ${snap}, espere ..." "Error al eliminar el paquete ${snap}"
     done
 
-    execute "sudo apt -y purge snapd" "Eliminando snap del sistema, por favor, espere ..." "Error al eliminar snap del sistema"
+    execute "sudo apt -y purge snapd" "Eliminando snap del sistema, espere ..." "Error al eliminar snap del sistema"
 
     success_message 'Eliminación de Snap terminada\n'
 fi
@@ -52,9 +52,9 @@ success_message 'Instalación de de paquetes terminada\n'
 message 'Instalación de Google Chrome'
 
 temp="$(mktemp)"
-execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, por favor, espere ..." "Error al descargar google chrome estable"
-execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, por favor, espere ..." "Error al instalar google chrome estable"
-execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales google chrome estable"
+execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, espere ..." "Error al descargar google chrome estable"
+execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, espere ..." "Error al instalar google chrome estable"
+execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales google chrome estable"
 rm -rf ${temp} &> ${NULL}
 
 success_message 'Instalación de Google Chrome terminada\n'
@@ -62,10 +62,10 @@ success_message 'Instalación de Google Chrome terminada\n'
 message 'Instalación de Visual Studio Code'
 
 temp="$(mktemp)"
-execute "curl -sL -o ${temp} ${VS_CODE_DEB}" "Descargando visual studio code, por favor, espere ..." "Error al descargar visual studio code"
-execute "sudo dpkg -i ${temp}" "Instalando visual studio code, por favor, espere ..." "Error al instalar visual studio code"
-execute "rm -f ${temp}" "Eliminando archivos temporales, por favor, espere ..." "Error al eliminar archivos temporales visual studio code"
-execute "code --install-extension Shan.code-settings-sync" "Instalando extensión settings sync, por favor, espere ..." "Error al instalar la extension settings sync"
+execute "curl -sL -o ${temp} ${VS_CODE_DEB}" "Descargando visual studio code, espere ..." "Error al descargar visual studio code"
+execute "sudo dpkg -i ${temp}" "Instalando visual studio code, espere ..." "Error al instalar visual studio code"
+execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales visual studio code"
+execute "code --install-extension Shan.code-settings-sync" "Instalando extensión settings sync, espere ..." "Error al instalar la extension settings sync"
 rm -rf ${temp} &> ${NULL}
 
 success_message 'Instalación de visual studio code terminada\n'
