@@ -57,6 +57,15 @@ function install_package()
     execute "sudo apt-get install -y $1" "Instalando $(package_info "$1"), espere ..." "Error al instalar el paquete '$(package_info "$1")"
 }
 
+function install_deb()
+{
+    temp="$(mktemp)"
+    execute "curl -sL -o ${temp} $1" "Descargando $2, espere ..." "Error al descargar $2"
+    execute "sudo dpkg -i ${temp}" "Instalando $2, espere ..." "Error al instalar $2"
+    execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales"
+    rm -rf ${temp} &> ${NULL}
+}
+
 function enable_repository() 
 {
     execute "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", espere ..." "Error al activar el repositorio $1"

@@ -47,26 +47,20 @@ for package in ${PACKAGES_LIST}; do
     bar::status_changed ${steps_done_package} ${COUNT}
 done
 bar::stop
+
 success_message 'Instalación de de paquetes terminada\n'
 
 message 'Instalación de Google Chrome'
 
-temp="$(mktemp)"
-execute "curl -sL -o ${temp} ${GOOGLE_CHROME_DEB}" "Descargando google chrome estable, espere ..." "Error al descargar google chrome estable"
-execute "sudo dpkg -i ${temp}" "Instalando google chrome estable, espere ..." "Error al instalar google chrome estable"
-execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales google chrome estable"
-rm -rf ${temp} &> ${NULL}
+install_deb "${GOOGLE_CHROME_DEB}" "google chrome estable"
 
 success_message 'Instalación de Google Chrome terminada\n'
 
 message 'Instalación de Visual Studio Code'
 
-temp="$(mktemp)"
-execute "curl -sL -o ${temp} ${VS_CODE_DEB}" "Descargando visual studio code, espere ..." "Error al descargar visual studio code"
-execute "sudo dpkg -i ${temp}" "Instalando visual studio code, espere ..." "Error al instalar visual studio code"
-execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales visual studio code"
+install_deb "${VS_CODE_DEB}" "visual studio code"
+
 execute "code --install-extension Shan.code-settings-sync" "Instalando extensión settings sync, espere ..." "Error al instalar la extension settings sync"
-rm -rf ${temp} &> ${NULL}
 
 success_message 'Instalación de visual studio code terminada\n'
 
