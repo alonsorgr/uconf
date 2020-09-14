@@ -14,6 +14,7 @@ COUNT=$((${REPOSITORIES_COUNT} + ${PACKAGES_COUNT}))
 
 GOOGLE_CHROME_DEB='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
 VS_CODE_DEB='https://update.code.visualstudio.com/latest/linux-deb-x64/stable'
+GITHUB_CLI_URL='https://cli.github.com/packages'
 
 message 'Actualizando paquetes instalados en el sistema'
 
@@ -34,6 +35,9 @@ if dpkg -s snapd >/dev/null 2>&1; then
 fi
 
 message 'Iniciando instalación de paquetes'
+
+execute "sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0" "Agregando clave para el repositorio de GitHub CLI, espere ..." "Error al agregar la clave para el repositorio de GitHub CLI"
+execute "sudo apt-add-repository -u ${GITHUB_CLI_URL}" "Activando repositorio para GitHub CLI, espere ..." "Error al activar el repositorio de GitHub CLI"
 
 bar::start
 for repository in ${REPOSITORIES_LIST}; do

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Name:Tipografías de programador
+# Name:Tipografías
 
 SRC_FONTS="${BASE_DIR}/fonts"
 DST_FONTS="$HOME/.local/share/fonts"
