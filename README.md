@@ -69,6 +69,9 @@ $ ./setup.sh --verbose --yes
   - Simpler Off Menu
   - User Themes
 
+- ### Terminal
+  - Sakura como emulador de terminal
+  - Shell Zsh con Oh-My-Zsh
 ---
 
 ## Consejos
