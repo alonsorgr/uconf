@@ -1,6 +1,6 @@
 
 NOMBRE
-       setup - ejecutable de configuración de Ubuntu
+       setup - Ejecutable de configuración de Ubuntu
 
 SINOPSIS
        setup [OPCIÓN]... SILENCIOSO... DEPURACIÓN
@@ -12,7 +12,7 @@ DESCRIPCIÓN
               Sí automático a las indicaciones; asumir "sí" como respuesta a todas las solicitudes y ejecutar de forma no interactiva
 
        --verbose
-              explicar lo que se está haciendo
+              Explicar lo que se está haciendo
 
        --help
               Muestra la Ayuda
