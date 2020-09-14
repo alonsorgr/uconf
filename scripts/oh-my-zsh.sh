@@ -44,6 +44,7 @@ else
     echo -e "Zsh ya asignado al usuario actual"
 fi
 dst="$HOME/.local/bin/exa"
+[ ! -d "$HOME/.local/bin/" ] && mkdir "$HOME/.local/bin/"
 if [ ! -f ${dst} ]; then
     echo -e "Instalando listador de archivos exa, espere ..."
     [ "${verbose}" == "--verbose" ] && curl -sL ${EXA_URL} | bunzip2 -d > ${dst} && chmod a+x ${dst} || curl -sL ${EXA_URL} | bunzip2 -d > ${dst} && chmod a+x ${dst} &> ${NULL}

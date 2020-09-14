@@ -12,4 +12,6 @@ mkdir -p ${CONFIG}
 execute "ln -sf $(realpath ${DIR}) ${CONFIG}/sakura.conf" "Creando enlace simbólico para la configuración de Sakura, espere ..." "Error al crear el enlace simbólico de Sakura"
 execute "sudo update-alternatives --quiet --set x-terminal-emulator ${SAKURA}" "Estableciendo Sakura como terminal predeterminado, espere ..." "Error al establecer a Sakura como terminal predeterminado"
 
+backup_and_link '.dircolors'
+
 success_message 'Configuración del emulador de terminal Sakura terminada\n'

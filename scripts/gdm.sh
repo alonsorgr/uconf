@@ -37,6 +37,10 @@ echo '@import url("resource:///org/gnome/shell/theme/original.css");
   background-size: cover;;
   background-position: center; }' > $dest/gdm3.css
 
+sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/gnome-shell.css $dest/gdm3.css
+sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-on.svg $dest/toggle-on.svg
+sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-off.svg $dest/toggle-off.svg
+
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/shell/theme">
