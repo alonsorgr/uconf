@@ -30,6 +30,7 @@ gresource extract $source $prefix/icons/scalable/actions/eye-not-looking-symboli
 gresource extract $source $prefix/icons/scalable/actions/pointer-double-click-symbolic.svg > $dest/icons/scalable/actions/pointer-double-click-symbolic.svg
 gresource extract $source $prefix/icons/scalable/actions/eye-open-negative-filled-symbolic.svg > $dest/icons/scalable/actions/eye-open-negative-filled-symbolic.svg
 
+sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/gnome-shell.css $dest/original.css
 echo '@import url("resource:///org/gnome/shell/theme/original.css");
   #lockDialogGroup {
   background: '$color';
@@ -37,7 +38,6 @@ echo '@import url("resource:///org/gnome/shell/theme/original.css");
   background-size: cover;;
   background-position: center; }' > $dest/gdm3.css
 
-sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/gnome-shell.css $dest/gdm3.css
 sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-on.svg $dest/toggle-on.svg
 sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-off.svg $dest/toggle-off.svg
 
