@@ -130,7 +130,7 @@ function deb_url_install()
 #   Instala un paquete deb desde una url.
 #   @param $1   Url del paquete deb.
 {
-    if ! dpkg -s $3 >${NULL} 2>&1; then
+    if ! dpkg -s "$3" >${NULL} 2>&1; then
         local temp="$(mktemp)"
         message "Descargando paquete deb $2, espere ..."
         run curl -sL -o ${temp} $1

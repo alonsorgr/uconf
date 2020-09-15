@@ -31,10 +31,10 @@ SUGGESTION_COLOR=#CCCCCC
 SNAP_PACKAGES='snap-store gtk-common-themes gnome-3-34-1804 core18'
 
 # Url de descarga directa de Google Chrome
-GOOGLE_CHROME_DEB='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+GOOGLE_CHROME_DEB_URL='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
 
 # Url de descarga directa de Visual Studio Code
-VS_CODE_DEB='https://update.code.visualstudio.com/latest/linux-deb-x64/stable'
+VS_CODE_DEB_URL='https://update.code.visualstudio.com/latest/linux-deb-x64/stable'
 
 # Url de descarga directa de GitHub CLI.
 GITHUB_CLI_URL='https://cli.github.com/packages'

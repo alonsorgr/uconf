@@ -2,9 +2,9 @@
 
 # Name:Tipografías
 
-SRC_FONTS="${BASE_DIR}/fonts"
-DST_FONTS="$HOME/.local/share/fonts"
-FONTS_LIST=$(cat ${BASE_DIR}/config/fonts.cfg)
+SRC_FONTS="${__DIR__}/fonts"
+DST_FONTS="${HOME}/.local/share/fonts"
+FONTS_LIST=$(cat ${__DIR__}/config/fonts.cfg)
 
 message 'Intsalación de Tipografías'
 
