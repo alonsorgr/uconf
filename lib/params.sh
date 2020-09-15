@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='fonts'
+SCRIPTS='wayland'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -62,3 +62,6 @@ SRC_FONTS="${__DIR__}/fonts"
 
 # Directorio de destino de tipografías.
 DST_FONTS="${HOME}/.local/share/fonts"
+
+# Archivo de configuración de GDM
+GDM_CONF='/etc/gdm3/custom.conf'
