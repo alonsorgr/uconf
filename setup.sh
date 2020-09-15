@@ -52,3 +52,9 @@ function init()
 
 #   Inicializa la ejecución de los scripts
 init
+
+if [ -f "${__DIR__}/log" ]; then
+    error_message "\nInstalación completada con errores. Para más información, consultar el log"
+else
+    success_message "\nInstalación terminada satisfactoriamente"
+fi

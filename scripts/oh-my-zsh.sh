@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 # Name:Instalación de configuración de zsh Oh My ZSH
 
 OH_MY_ZSH_URL='http://install.ohmyz.sh'
@@ -52,5 +58,5 @@ else
 fi
 
 message "Creando enlace simbólico para la configuración de zsh Oh My ZSH, espere ..."
-run backup_and_link .zshrc
+run backup_and_link '.zshrc'
 errors "Error al crear el enlace simbólico para la configuración de zsh Oh My ZSH"

@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='oh-my-zsh'
+SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory'
 
 # Redireccion a null.
 NULL='/dev/null'

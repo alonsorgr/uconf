@@ -24,7 +24,7 @@ function check_param()
     if [ ${args} -le 3 ]; then
         if [ -n "$1" ]; then
              if [ "$1" == "--help" ]; then
-                less ${BASE_DIR}/help
+                less ${__DIR__}/help
                 exit
             elif [ "$1" == "--yes" ]; then
                 yes='-y'

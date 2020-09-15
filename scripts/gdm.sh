@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 src='/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource'
 dst='/usr/local/share/gnome-shell/theme/plata-noir'
 prefix='/org/gnome/shell/theme'

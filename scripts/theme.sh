@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 # Name:Tema GTK Plata
 
 message "Eliminando versiones anteriores del tema GTK Plata, espere ..."
@@ -10,7 +16,7 @@ message "Configurando tema GTK plata, espere ..."
 run "${__DIR__}/theme/plata-theme/autogen.sh --prefix=/usr" --with-selection_color=${SELECTION_COLOR} --with-accent_color=${ACCENT_COLOR} --with-suggestion_color=${SUGGESTION_COLOR}
 errors "Error al configurar el tema GTK Plata"
 
-message "Generando tema GTK configurado, espere ..."
+message "Generando tema GTK plata configurado, espere ..."
 run sudo make -C "${__DIR__}/theme/plata-theme"
 errors "Error al generar el tema GTK Plata"
 

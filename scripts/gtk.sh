@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 # Name:Configuración personal de GTK
 
 [ ! -d "$HOME/.config/gtk-3.0/" ] && mkdir -p ${GTK_CONFIG}

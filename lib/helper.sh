@@ -30,7 +30,7 @@ function success_message()
     echo -e "\033[1;32m$1\033[0m"
 }
 
-function _error_message()
+function error_message()
 ###
 #   Muestra un mensaje formateado en negrita de color rojo.
 #   @param $1     Texto que se mostrará en el mensaje.
@@ -65,7 +65,8 @@ function errors()
 #   @param $1     Texto que se mostrará en el mensaje de error y en el log.
 {
     if [ $? -ne 0 ]; then
-        _error_message "$1"
+        error_message "$1"
+        [ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
         echo "$1" >> "${__DIR__}/log"
         if [ "${exit}" == '--exit' ]; then
             yes_no_message exit "$(message "Ocurrió un error inesperado. \n¿Desea cancelar la instalación y salir? (S/n): ")"
@@ -120,9 +121,13 @@ function apt_ppa_enable()
 #   Activa un reposotorio de APT.
 #   @param $1   Nombre del reposiyorio PPA.
 {
-    message "Activando repositorio "$1", espere ..."
-    run sudo add-apt-repository -y ppa:"$1" 
-    errors "Error al activar el repositorio "$1"."
+    if ! grep -q "$1" /etc/apt/sources.list; then
+        message "Activando repositorio "$1", espere ..."
+        run sudo add-apt-repository -y ppa:"$1" 
+        errors "Error al activar el repositorio "$1"."
+    else
+        message "Repositorio $1 ya activado ..."
+    fi
 }
 
 function deb_url_install()
@@ -175,7 +180,7 @@ function check_directory()
 #   Comprueba si el script se ejecuta desde el directorio base
 {
     if [ "${__DIR__}" != "${PWD}" ]; then
-        _error_message "Error: debe ejecutar el script desde el directorio ${__DIR__}"
+        error_message "Error: debe ejecutar el script desde el directorio ${__DIR__}"
     exit 1
 fi
 }
@@ -202,7 +207,11 @@ function backup_and_link()
 #   @param $1   Archivo de configuración para crear la copia de seguridad y el enlace simbólico.
 #   @param $2   Extensión de la copia de seguridad y el enlace simbólico. 
 {
-    [ -n "$2" ] && local file=$HOME/$2/$1 || local file=$HOME/$1
+    if [ -n "$2" ]; then
+        local file=$HOME/$2/$1
+    else
+        local file=$HOME/$1
+    fi
     if [ -e ${file} ]; then
         if [ ! -e ${file}.old ]; then
             if [ "$(realpath $PWD/config/$1)" != "$(realpath ${file})" ]; then
@@ -211,6 +220,6 @@ function backup_and_link()
         fi
         rm -rf ${file}
     fi
-    local path=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
+    local path=$(realpath -s --relative-to=${HOME}/$2 $PWD/config/$1)
     ln -sf ${path} ${file}
 }
