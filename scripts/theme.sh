@@ -2,12 +2,30 @@
 
 # Name:Tema GTK Plata
 
-message 'Intsalación de tema GTK Plata'
-execute "sudo rm -rf /usr/share/themes/{Plata,Plata-Compact,Plata-Lumine,Plata-Lumine-Compact,Plata-Noir,Plata-Noir-Compact}" "Eliminando versiones anteriores del tema GTK Plata, espere ..." "Error al eliminar versiones anteriores del tema GTK Plata"
-execute "${BASE_DIR}/theme/plata-theme/autogen.sh --prefix=/usr --with-selection_color=#bfbfbf --with-accent_color=#ffffff --with-suggestion_color=#cccccc" "Configurando colores del tema GTK, espere ..." "Error al configurar colores del tema GTK"
-execute "make -C ${BASE_DIR}/theme/plata-theme" "Generando tema GTK con la configuración de los colores configurados, espere ..." "Error al generar tema GTK con la configuración de los colores configurados"
-execute "sudo make install -C ${BASE_DIR}/theme/plata-theme" "Instalando tema GTK con la configuración de los colores configurados, espere ..." "Error al instalar tema GTK con la configuración de los colores configurados"
-execute "gsettings set org.gnome.shell.extensions.user-theme name 'Plata-Noir'" "Activando tema GDM Plata, espere ..." "Error al activar tema GDM Plata"
-execute "gsettings set org.gnome.desktop.interface gtk-theme 'Plata-Noir'" "Activando tema GTK Plata, espere ..." "Error al activar tema GTK Plata"
-execute "sudo ${BASE_DIR}/scripts/gdm.sh" "Configurando el fondo de pantalla de inicio de sesión, espere ..." "Error al configurar el fondo de pantalla de inicio de sesión"
-success_message 'Instalación de tema GTK Plata terminada\n'
+message "Eliminando versiones anteriores del tema GTK Plata, espere ..."
+run sudo rm -rf /usr/share/themes/{Plata,Plata-Compact,Plata-Lumine,Plata-Lumine-Compact,Plata-Noir,Plata-Noir-Compact}
+errors "Error al eliminar las versiones anteriores del tema GTK Plata"
+
+message "Configurando tema GTK plata, espere ..."
+run "${__DIR__}/theme/plata-theme/autogen.sh --prefix=/usr" --with-selection_color=${SELECTION_COLOR} --with-accent_color=${ACCENT_COLOR} --with-suggestion_color=${SUGGESTION_COLOR}
+errors "Error al configurar el tema GTK Plata"
+
+message "Generando tema GTK configurado, espere ..."
+run sudo make -C "${__DIR__}/theme/plata-theme"
+errors "Error al generar el tema GTK Plata"
+
+message "Instalando tema GTK plata generado, espere ..."
+run sudo make install -C "${__DIR__}/theme/plata-theme"
+errors "Error al instalar el tema GTK Plata"
+
+message "Activando tema GTK plata generado, espere ..."
+run gsettings set org.gnome.desktop.interface gtk-theme 'Plata-Noir'
+errors "Error al activar el tema GTK Plata"
+
+message "Generando tema GTK plata para pantalla de inicio de sesión, espere ..."
+run sudo "${__DIR__}/scripts/gdm.sh"
+errors "Error al generar el tema GTK plata de pantalla de inicio de sesión"
+
+message "Activando tema GTK plata generado en pantalla de inicio de sesión, espere ..."
+run gsettings set org.gnome.shell.extensions.user-theme name 'Plata-Noir'
+errors "Error al activar el tema GTK plata en pantalla de inicio de sesión"

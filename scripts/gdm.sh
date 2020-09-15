@@ -1,45 +1,40 @@
 #!/bin/bash
 
-source="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
+src='/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource'
+dst='/usr/local/share/gnome-shell/theme/plata-noir'
+prefix='/org/gnome/shell/theme'
+color='#080808'
 
-color="#080808"
+install -D ${NULL} "${dst}/gdm3.css"
+install -D ${NULL} "${dst}/plata-noir.gresource.xml"
+install -d "${dst}/icons/scalable/actions"
 
-prefix="/org/gnome/shell/theme"
-dest="/usr/local/share/gnome-shell/theme/focalgdm3"
+gresource extract "${src}" "${prefix}/checkbox.svg" > "${dst}/checkbox.svg"
+gresource extract "${src}" "${prefix}/checkbox-off.svg" > "${dst}/checkbox-off.svg"
+gresource extract "${src}" "${prefix}/checkbox-focused.svg" > "${dst}/checkbox-focused.svg"
+gresource extract "${src}" "${prefix}/checkbox-off-focused.svg" > "${dst}/checkbox-off-focused.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/pointer-drag-symbolic.svg" > "${dst}/icons/scalable/actions/pointer-drag-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/keyboard-enter-symbolic.svg" > "${dst}/icons/scalable/actions/keyboard-enter-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/keyboard-hide-symbolic.svg" > "${dst}/icons/scalable/actions/keyboard-hide-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/pointer-secondary-click-symbolic.svg" > "${dst}/icons/scalable/actions/pointer-secondary-click-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/keyboard-shift-filled-symbolic.svg" > "${dst}/icons/scalable/actions/keyboard-shift-filled-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/keyboard-caps-lock-filled-symbolic.svg" > "${dst}/icons/scalable/actions/keyboard-caps-lock-filled-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/pointer-primary-click-symbolic.svg" > "${dst}/icons/scalable/actions/pointer-primary-click-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/keyboard-layout-filled-symbolic.svg" > "${dst}/icons/scalable/actions/keyboard-layout-filled-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/eye-not-looking-symbolic.svg" > "${dst}/icons/scalable/actions/eye-not-looking-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/pointer-double-click-symbolic.svg" > "${dst}/icons/scalable/actions/pointer-double-click-symbolic.svg"
+gresource extract "${src}" "${prefix}/icons/scalable/actions/eye-open-negative-filled-symbolic.svg "> "${dst}/icons/scalable/actions/eye-open-negative-filled-symbolic.svg"
 
-install -D /dev/null $dest/gdm3.css
-install -D /dev/null $dest/focalgdm3.gresource.xml
-install -d $dest/icons/scalable/actions
+cp -rf '/usr/share/themes/Plata-Noir/gnome-shell/gnome-shell.css' "${dst}/original.css"
+cp -rf '/usr/share/themes/Plata-Noir/gnome-shell/toggle-on.svg' "${dst}/toggle-on.svg"
+cp -rf '/usr/share/themes/Plata-Noir/gnome-shell/toggle-off.svg' "${dst}/toggle-off.svg"
 
-gresource extract $source $prefix/gdm3.css > $dest/original.css
-gresource extract $source $prefix/checkbox.svg > $dest/checkbox.svg
-gresource extract $source $prefix/checkbox-off.svg > $dest/checkbox-off.svg
-gresource extract $source $prefix/checkbox-focused.svg > $dest/checkbox-focused.svg
-gresource extract $source $prefix/checkbox-off-focused.svg > $dest/checkbox-off-focused.svg
-gresource extract $source $prefix/toggle-on.svg > $dest/toggle-on.svg
-gresource extract $source $prefix/toggle-off.svg > $dest/toggle-off.svg
-gresource extract $source $prefix/icons/scalable/actions/pointer-drag-symbolic.svg > $dest/icons/scalable/actions/pointer-drag-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/keyboard-enter-symbolic.svg > $dest/icons/scalable/actions/keyboard-enter-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/keyboard-hide-symbolic.svg > $dest/icons/scalable/actions/keyboard-hide-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/pointer-secondary-click-symbolic.svg > $dest/icons/scalable/actions/pointer-secondary-click-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/keyboard-shift-filled-symbolic.svg > $dest/icons/scalable/actions/keyboard-shift-filled-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/keyboard-caps-lock-filled-symbolic.svg > $dest/icons/scalable/actions/keyboard-caps-lock-filled-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/pointer-primary-click-symbolic.svg > $dest/icons/scalable/actions/pointer-primary-click-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/keyboard-layout-filled-symbolic.svg > $dest/icons/scalable/actions/keyboard-layout-filled-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/eye-not-looking-symbolic.svg > $dest/icons/scalable/actions/eye-not-looking-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/pointer-double-click-symbolic.svg > $dest/icons/scalable/actions/pointer-double-click-symbolic.svg
-gresource extract $source $prefix/icons/scalable/actions/eye-open-negative-filled-symbolic.svg > $dest/icons/scalable/actions/eye-open-negative-filled-symbolic.svg
-
-sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/gnome-shell.css $dest/original.css
 echo '@import url("resource:///org/gnome/shell/theme/original.css");
   #lockDialogGroup {
-  background: '$color';
+  background: '${color}';
   background-repeat: no-repeat;
   background-size: cover;;
-  background-position: center; }' > $dest/gdm3.css
-
-sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-on.svg $dest/toggle-on.svg
-sudo cp -rf /usr/share/themes/Plata-Noir/gnome-shell/toggle-off.svg $dest/toggle-off.svg
+  background-position: center; }' > "${dst}/gdm3.css"
 
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <gresources>
@@ -64,11 +59,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <file>icons/scalable/actions/pointer-double-click-symbolic.svg</file>
     <file>icons/scalable/actions/eye-open-negative-filled-symbolic.svg</file>
   </gresource>
-</gresources>' > $dest/focalgdm3.gresource.xml
+</gresources>' > "${dst}/plata-noir.gresource.xml"
 
-cd $dest
-glib-compile-resources focalgdm3.gresource.xml
-mv focalgdm3.gresource ..
-rm -r $dest
-update-alternatives --quiet --install /usr/share/gnome-shell/gdm3-theme.gresource gdm3-theme.gresource /usr/local/share/gnome-shell/theme/focalgdm3.gresource 0
-update-alternatives --quiet --set gdm3-theme.gresource /usr/local/share/gnome-shell/theme/focalgdm3.gresource
+cd ${dst}
+glib-compile-resources plata-noir.gresource.xml
+mv plata-noir.gresource ..
+rm -r ${dst}
+update-alternatives --quiet --install '/usr/share/gnome-shell/gdm3-theme.gresource' gdm3-theme.gresource '/usr/local/share/gnome-shell/theme/plata-noir.gresource' 0
+update-alternatives --quiet --set gdm3-theme.gresource '/usr/local/share/gnome-shell/theme/plata-noir.gresource'

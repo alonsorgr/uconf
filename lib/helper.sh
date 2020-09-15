@@ -1,25 +1,51 @@
 #!/bin/bash
 
-verbose="$1"
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
 
-function message() 
+function message()
+###
+#   Muestra un mensaje.
+#   @param $1     Texto que se mostrará en el mensaje. 
 {
-    echo -e "\033[0;34m$1\033[0m"
+    echo -e "$1"
 }
 
-function success_message() 
+function information_message()
+###
+#   Muestra un mensaje formateado en negrita de color azul.
+#   @param $1     Texto que se mostrará en el mensaje.
 {
-    echo -e "\033[0;32m$1\033[0m"
+    echo -e "\033[1;34m$1\033[0m"
 }
 
-function error_message() 
+function success_message()
+###
+#   Muestra un mensaje formateado en negrita de color verde.
+#   @param $1     Texto que se mostrará en el mensaje.
 {
-    echo -e "\033[0;31m$1\033[0m"
+    echo -e "\033[1;32m$1\033[0m"
 }
 
-function question() 
+function _error_message()
+###
+#   Muestra un mensaje formateado en negrita de color rojo.
+#   @param $1     Texto que se mostrará en el mensaje.
 {
-    if [[ $3 == -y ]]; then
+    echo -e "\033[1;31m\033[5;31m$1\033[0m"
+}
+
+function yes_no_message()
+###
+#   Formula una pregunta en forma de mensaje de sí o no.
+#   @param $1     Comando que se ejecutará en caso de afirmativo.
+#   @param $2     Texto que se mostrará en el mensaje.
+#   @param $3     Sí automático a las indicaciones; asumir "sí" como respuesta.
+{
+    if [[ "${yes}" == '-y' ]]; then
         $1
     else
         while true; do
@@ -33,66 +59,148 @@ function question()
     fi
 }
 
-function check_errors() 
+function errors()
+###
+#   Comprueba si ocurrió algún error al ejecutar el comando enterior.
+#   @param $1     Texto que se mostrará en el mensaje de error y en el log.
 {
     if [ $? -ne 0 ]; then
-        error_message "$1"
+        _error_message "$1"
+        echo "$1" >> "${__DIR__}/log"
+        if [ "${exit}" == '--exit' ]; then
+            yes_no_message exit "$(message "Ocurrió un error inesperado. \n¿Desea cancelar la instalación y salir? (S/n): ")"
+        fi
     fi
 }
 
-function package_info() 
+function clear_log()
+##
+#   Elimina el fichero log de la instalación anterior.
 {
-    echo -e "($1-v.$(apt-cache show "$1" | grep Version | cut -d: -f2 | tr -d '[:space:]'))"
+    rm -rf "${__DIR__}/log"
 }
 
-function execute() 
+function run()
+###
+#   Ejecuta un comando y comprueba el estado de la salida.
+#   @param $1     Comando de la shell.
 {
-    echo -e "$2"
-    [ "${verbose}" == "--verbose" ] && $1 || $1 &> ${NULL}
-    check_errors "$3"
+    if [ "${verbose}" == "--verbose" ]; then
+        $@
+    else
+        $@ &> ${NULL}
+    fi
 }
 
-function install_package() 
+function apt_info()
+###
+#   Devuelve información de un paquete de instalación APT.
+#   @param $1   Nombre del paquete.
 {
-    execute "sudo apt-get install -y $1" "Instalando $(package_info "$1"), espere ..." "Error al instalar el paquete '$(package_info "$1")"
+    message "($1-v.$(apt-cache show "$1" 2> ${NULL}| grep Version | cut -d: -f2 | tr -d '[:space:]'))"
 }
 
-function install_deb()
+function apt_install()
+###
+#   Instala un paquete APT.
+#   @param $1 Paquete a instalar por APT.
 {
-    temp="$(mktemp)"
-    execute "curl -sL -o ${temp} $1" "Descargando $2, espere ..." "Error al descargar $2"
-    execute "sudo dpkg -i ${temp}" "Instalando $2, espere ..." "Error al instalar $2"
-    execute "rm -f ${temp}" "Eliminando archivos temporales, espere ..." "Error al eliminar archivos temporales"
-    rm -rf ${temp} &> ${NULL}
+    info="$(apt_info "$1")"
+    if ! dpkg -s $1 >${NULL} 2>&1; then
+        message "Instalando ${info}, espere ..."
+        run sudo apt-get -y install "$1"
+        errors "Error al instalar el paquete ${info}"
+    else
+        message "Paquete ${info} ya instalado ..."
+    fi
 }
 
-function enable_repository() 
+function apt_ppa_enable()
+###
+#   Activa un reposotorio de APT.
+#   @param $1   Nombre del reposiyorio PPA.
 {
-    execute "sudo add-apt-repository -y ppa:$1" "Activando repositorio "$1", espere ..." "Error al activar el repositorio $1"
+    message "Activando repositorio "$1", espere ..."
+    run sudo add-apt-repository -y ppa:"$1" 
+    errors "Error al activar el repositorio "$1"."
 }
 
-function apt_update() {
-    execute "sudo apt-get update -y" "Actualizando la lista de paquetes instalados, espere ..." "Error al actualizar la lista de paquetes"
-    execute "sudo apt-get upgrade -y" "Actualizando paquetes instalados, espere ..." "Error al actualizar los paquetes"
+function deb_url_install()
+###
+#   Instala un paquete deb desde una url.
+#   @param $1   Url del paquete deb.
+{
+    if ! dpkg -s $3 >${NULL} 2>&1; then
+        local temp="$(mktemp)"
+        message "Descargando paquete deb $2, espere ..."
+        run curl -sL -o ${temp} $1
+        errors "Error al descargar el paquete deb $2"
+        message "Instalando paquete deb $2, espere ..."
+        run sudo dpkg -i ${temp}
+        errors "Error al instalar el paquete deb $2"
+        message "Eliminando archivos temporales, espere ..."
+        run rm -rf ${temp} &> ${NULL}
+        errors "Error al eliminar archivos temporales"
+    else
+        message "Paquete $2 ya instalado ..."
+    fi
+}
+
+function apt_update()
+###
+#   Actualiza e instala paquetes del sistema.
+{
+    message "Actualizando la lista de paquetes instalados, espere ..."
+    run sudo apt-get -y update
+    errors "Error al actualizar la lista de paquetes instalados"
+    message "Actualizando paquetes instalados, espere ..."
+    run sudo apt-get -y upgrade
+    errors "Error al actualizar los paquetes instalados"
 }
 
 function apt_clean() 
+###
+#   Elimina paquetes obsoletos del sistema y purga el sistema.
 {
-    execute "sudo apt autoremove -y" "Eliminando paquetes innecesarios, espere ..." "Error al eliminar paquetes innecesarios"
-    execute "sudo apt autoclean -y" "Limpiando el sistema, espere ..." "Error al limpiar el sistema"
+    message "Eliminando paquetes innecesarios, espere ..."
+    run sudo apt-get -y autoremove
+    errors "Error al eliminar paquetes innecesarios"
+    message "Limpiando el sistema de paquetes obsoletos, espere ..."
+    run sudo apt-get -y autoclean
+    errors "Error al limpiar el sistema de paquetes obsoletos"
 }
 
-function module_update() 
+function check_directory()
+##
+#   Comprueba si el script se ejecuta desde el directorio base
 {
-    execute "git submodule update --init --recursive" "Actualizando múdulos, espere ..." "Error al actualizar los módulos"
+    if [ "${__DIR__}" != "${PWD}" ]; then
+        _error_message "Error: debe ejecutar el script desde el directorio ${__DIR__}"
+    exit 1
+fi
 }
 
-function script_name() 
+function git_module_update()
+###
+#   Actualiza los módulos git.
 {
-    cat $1 | grep Name: | cut -d ':' -f2
+    message "Actualizando múdulos de git, espere ...\n"
+    run git submodule update --init --recursive
+    errors "Error al actualizar los módulos de git"
+}
+
+function script_name()
+###
+#   Devuelve el nombre del script definido en un comentario.
+{
+    cat "$1" | grep Name: | cut -d ':' -f2
 }
 
 function backup_and_link()
+###
+#   Devuelve el nombre del script definido en una variable.
+#   @param $1   Archivo de configuración para crear la copia de seguridad y el enlace simbólico.
+#   @param $2   Extensión de la copia de seguridad y el enlace simbólico. 
 {
     [ -n "$2" ] && local file=$HOME/$2/$1 || local file=$HOME/$1
     if [ -e ${file} ]; then
