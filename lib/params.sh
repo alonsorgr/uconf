@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='sakura'
+SCRIPTS='icons'
 
 # Redireccion a null.
 NULL='/dev/null'
