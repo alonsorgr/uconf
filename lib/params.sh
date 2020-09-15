@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='wayland'
+SCRIPTS='sakura'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -65,3 +65,6 @@ DST_FONTS="${HOME}/.local/share/fonts"
 
 # Archivo de configuración de GDM
 GDM_CONF='/etc/gdm3/custom.conf'
+
+# Ruta del ejecutable del emulador de terminal Sakura.
+SAKURA_BIN_PATH="/usr/bin/sakura"
