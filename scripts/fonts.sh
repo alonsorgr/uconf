@@ -2,20 +2,22 @@
 
 # Name:Tipografías
 
-SRC_FONTS="${__DIR__}/fonts"
-DST_FONTS="${HOME}/.local/share/fonts"
-FONTS_LIST=$(cat ${__DIR__}/config/fonts.cfg)
-
-message 'Intsalación de Tipografías'
-
-mkdir -p ${DST_FONTS}
+if [ ! -d "${DST_FONTS}" ]; then
+    message "Creando el directorio para la instalación de las tipografías, espere ..."
+    run mkdir -p ${DST_FONTS}
+    errors "Error al crear el directorio para la instalación de las tipografías"
+fi
 
 for font in ${FONTS_LIST}; do
-    execute "cp -rf ${SRC_FONTS}/$f/* ${FONTS_DIR}" "Instalándo tipografía ${font}, espere ..." "Error al instalar la tipografía ${font}"
+    message "Instalándo tipografía ${font}, espere ..."
+    run cp -rf ${SRC_FONTS}/* ${FONTS_DIR}
+    errors "Error al instalar la tipografía ${font}"
 done
 
-execute "fc-cache -f ${FONTS_DIR}" "Actualizando caché de tipografías del sistema, espere ..."
+message "Actualizando caché de tipografías del sistema, espere ..."
+run fc-cache -f ${FONTS_DIR}
+errors "Error al actualizar la caché de tipografías del sistema"
 
-execute "${SRC_FONTS}/powerline-fonts/install.sh" "Instalándo tipografías Powerline Fonts, espere ..." "Error al instalar la tipografía Powerline Fonts"
-
-success_message 'Instalación de tipografías terminada\n'
+message "Instalándo tipografías Powerline Fonts, espere ..."
+run ${SRC_FONTS}/powerline-fonts/install.sh
+errors "Error al instalar la tipografía Powerline Fonts"

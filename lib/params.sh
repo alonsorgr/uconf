@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages'
+SCRIPTS='fonts'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -53,3 +53,12 @@ PACKAGES_LIST=$(cat ${__DIR__}/config/packages.cfg)
 
 # Número de paquetes a instalar
 PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
+
+# Lista de tipografías.
+FONTS_LIST=$(cat "${__DIR__}/config/fonts.cfg")
+
+# Directorio de origen de tipografías.
+SRC_FONTS="${__DIR__}/fonts"
+
+# Directorio de destino de tipografías.
+DST_FONTS="${HOME}/.local/share/fonts"
