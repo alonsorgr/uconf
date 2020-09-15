@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='gtk'
+SCRIPTS='extensions'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -74,3 +74,36 @@ GTK_CONFIG="${HOME}/.config/gtk-3.0/gtk.css"
 
 # Configuración de headerbar css gtk-3.0.
 GTK_HEADERBAR_URL='https://gist.githubusercontent.com/alonsorgr/3f6a63bb39bc092f16894f3fabb1bc86/raw/c4fabdcadf39918c11d25ab2ede79251ff06a879/gtk.css'
+
+# Url del repositorio de la extensión Clipboard Indicator.
+CLIPBOARD_INDICATOR_URL='https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git'
+
+# Url del repositorio de la extensión Dash To Panel.
+DASH_TO_PANEL_URL='https://github.com/home-sweet-gnome/dash-to-panel.git'
+
+# Url del repositorio de la extensión Easy Screen Cast.
+EASY_SCREEN_CAST_URL='https://github.com/EasyScreenCast/EasyScreenCast.git'
+
+# Url del repositorio de la extensión Screenshot Tool.
+SCREENSHOT_URL='https://github.com/OttoAllmendinger/gnome-shell-screenshot.git'
+
+# Url del repositorio de la extensión Simpler Off Menu.
+SIMPLER_OF_MENU_URL='https://gitlab.com/K3rcus/simpler-off-menu.git'
+
+# Directorio de recursos de extensiones.
+PREFIX_SRC="${__DIR__}/gnome/extensions"
+
+# Directorio de configuración de Screenshot Tool.
+SCREENSHOT_TOOL_CONFIG="${__DIR__}/gnome/extensions/screenshot-tool"
+
+# Directorio de destino de extensiones.
+PREFIX_EXT_DST="$HOME/.local/share/gnome-shell/extensions"
+
+# Directorio de destino de Clipboard Indicator.
+CLIPBOARD_INDICATOR_DST="${PREFIX_EXT_DST}/clipboard-indicator@tudmotu.com"
+
+# Directorio de destino de Screenshot Tool.
+SCREENSHOT_TOOL_DST="${PREFIX_EXT_DST}/gnome-shell-screenshot@ttll.de"
+
+# Directorio de destino de Simpler Off Menu.
+SIMPLER_OFF_MENU_DST="${PREFIX_EXT_DST}/SimplerOffMenu.kerkus@pm.me"
