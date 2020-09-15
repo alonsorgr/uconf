@@ -14,6 +14,9 @@ DESCRIPCIÓN
        --verbose
               Explicar lo que se está haciendo
 
+       --exit
+              Pregunta si desea seguir con el script si ocurre un error
+
        --help
               Muestra la Ayuda
 

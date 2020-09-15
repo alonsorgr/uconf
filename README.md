@@ -29,12 +29,15 @@ $ ./setup.sh --yes # Sí automático a las indicaciones
 ```sh
 $ ./setup.sh --verbose # Explicar lo que se está haciendo
 ```
+```sh
+$ ./setup.sh --exit # Pregunta si desea seguir con el script si ocurre un error
+```
 
-Se pueden utilizar ambas
+Se pueden combinar los parámetros
 
 ```sh
-$ ./setup.sh --yes --verbose
-$ ./setup.sh --verbose --yes
+$ ./setup.sh --yes --verbose --exit
+$ ./setup.sh --exit --verbose --yes
 ```
 ***
 ## Incluye
