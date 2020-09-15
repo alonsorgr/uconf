@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='icons'
+SCRIPTS='gtk'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -68,3 +68,9 @@ GDM_CONF='/etc/gdm3/custom.conf'
 
 # Ruta del ejecutable del emulador de terminal Sakura.
 SAKURA_BIN_PATH="/usr/bin/sakura"
+
+# Archivo de configuración css gtk-3.0.
+GTK_CONFIG="${HOME}/.config/gtk-3.0/gtk.css"
+
+# Configuración de headerbar css gtk-3.0.
+GTK_HEADERBAR_URL='https://gist.githubusercontent.com/alonsorgr/3f6a63bb39bc092f16894f3fabb1bc86/raw/c4fabdcadf39918c11d25ab2ede79251ff06a879/gtk.css'
