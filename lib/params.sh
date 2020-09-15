@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='extensions'
+SCRIPTS='oh-my-zsh'
 
 # Redireccion a null.
 NULL='/dev/null'
