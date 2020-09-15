@@ -1,17 +1,22 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 # Name:Configuración del emulador de terminal Sakura
 
-DIR="${BASE_DIR}/config/sakura.conf"
-CONFIG="$HOME/.config/sakura"
-SAKURA="/usr/bin/sakura"
+mkdir -p ~/.config
+message "Creando enlace simbólico para la configuración del emulador de terminal sakura, espere ..."
+run backup_and_link sakura .config
+errors "Error al crear el enlace simbólico para la configuración del emulador de terminal sakura"
 
-message 'Configuración del emulador de terminal Sakura'
+message "Estableciendo como emulador de terminal a sakura, espere ..."
+run sudo update-alternatives --quiet --set x-terminal-emulator ${SAKURA_BIN_PATH}
+errors "Error al establecer como emulador de terminal a sakura"
 
-mkdir -p ${CONFIG}
-execute "ln -sf $(realpath ${DIR}) ${CONFIG}/sakura.conf" "Creando enlace simbólico para la configuración de Sakura, espere ..." "Error al crear el enlace simbólico de Sakura"
-execute "sudo update-alternatives --quiet --set x-terminal-emulator ${SAKURA}" "Estableciendo Sakura como terminal predeterminado, espere ..." "Error al establecer a Sakura como terminal predeterminado"
-
-backup_and_link '.dircolors'
-
-success_message 'Configuración del emulador de terminal Sakura terminada\n'
+message "Creando enlace simbólico para la configuración de dircolors del emulador de terminal sakura, espere ..."
+backup_and_link .dircolors
+errors "Error al crear el enlace simbólico para la configuración de dircolors del emulador de terminal sakura"

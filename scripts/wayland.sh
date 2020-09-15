@@ -1,9 +1,13 @@
 #!/bin/bash
 
+###
+# @link https://github.com/alonsorgr/uconf
+# @copyright Copyright (c) 2020 alonsorgr
+# @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
+##
+
 # Name:Configuración de WayLand
 
-GDM_CONF='/etc/gdm3/custom.conf'
-
-message 'Configuración de WayLand'
-execute "sudo sed -i s/#WaylandEnable=false/WaylandEnable=false/ ${GDM_CONF}" "Desactivando WayLand, espere ..." "Error al desactivar WayLand"
-success_message 'Configuración de WayLand terminada\n'
+message 'Desactivando Way Land en la configuración de GDM, espere ...'
+run sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' ${GDM_CONF}
+errors "Error al desactivar Way Land en la configuración de GDM"

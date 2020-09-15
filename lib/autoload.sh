@@ -6,8 +6,8 @@
 # @license https://raw.githubusercontent.com/alonsorgr/uconf/master/LICENSE?token=AH3YUC7WYRDYPH26XTVMTXK7NHANA
 ##
 
-# Name:Importación de configuración de GNOME
+# Comprobando dependencia curl
+apt_install curl
 
-message "Importando configuración de GNOME, espere ..."
-run dconf load / < "${__DIR__}/config/gnome.cfg"
-errors "Error al importar la configuración de GNOME"
+# Recurso importado: progressbar.sh
+source <(curl -sLo- "${PROGRESSBAR}") && bar::start && bar::stop
