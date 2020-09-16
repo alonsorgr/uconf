@@ -14,6 +14,14 @@ function message()
     echo -e "$1"
 }
 
+function message_n()
+###
+#   Muestra un mensaje con salto de línea.
+#   @param $1     Texto que se mostrará en el mensaje. 
+{
+    echo -en "$1"
+}
+
 function information_message()
 ###
 #   Muestra un mensaje formateado en negrita de color azul.
@@ -222,4 +230,68 @@ function backup_and_link()
     fi
     local path=$(realpath -s --relative-to=${HOME}/$2 $PWD/config/$1)
     ln -sf ${path} ${file}
+}
+
+function question()
+##
+#   Realiza una pregunta de si o no para configuración de Git.
+#   @param $1   Tipo de pregunta.
+#   @param $2   Texto que se mostrará en la pregunta.
+#   @param $3   Valor de la respuesta.
+{
+    local _SN
+    if [ -n "$4" ]; then
+        _SN="$3"
+    else
+        sn=$([ "$3" = "S" ] && echo -e "(S/n): " || echo -e "(S/n): ")
+        read -p "$2 ${sn}" _SN
+        _SN=$(echo "$_SN" | tr '[:lower:]' '[:upper:]')
+        if [ "$3" = "S" ]; then
+            [ "$_SN" != "N" ] && _SN="S"
+        else
+            [ "$_SN" != "S" ] && _SN="N"
+        fi
+    fi
+    eval "$1=$_SN"
+}
+
+function make_sure_new_line()
+##
+#   Asegura salto de línea.
+#   @param $1   Fichero.
+{
+    if [ "`tail -c1 $1`" != "" ]; then
+        echo "" >> $1
+    fi
+}
+
+function disable_sudo()
+##
+#   Desactiva el uso de sudo para un binario.
+#   @param $1   Binario.
+{
+    local L="%sudo	ALL=!$1"
+    local F=/etc/sudoers.d/$(echo $1 | tr "/" "-" | cut -c2-)
+    if [ ! -f "$F" ]; then
+        message "Desactivando el uso de $1 con sudo..."
+        echo "$L" | sudo tee $F > /dev/null
+        sudo chmod 440 $F
+    else
+        message "Uso de $1 con sudo ya desactivado."
+    fi
+}
+
+function netrc()
+##
+#   Crea entrada a netrc.
+#   @param $1   Dominio.
+#   @param $2   Usuario GitHub.
+#   @param $1   Token de GitHub.
+{
+    if grep -qs "machine $1" ~/.netrc; then
+        perl -i -0pe "s/machine $1\n  login \w+\n  password \w+/machine $1\n  login $2\n  password $3/" ~/.netrc
+    else
+        make_sure_new_line "${HOME}/.netrc"
+        echo "machine $1\n  login $2\n  password $3" >> ~/.netrc
+    fi
 }

@@ -7,7 +7,8 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory'
+#SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory git-config'
+SCRIPTS='git-config'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -107,3 +108,18 @@ SCREENSHOT_TOOL_DST="${PREFIX_EXT_DST}/gnome-shell-screenshot@ttll.de"
 
 # Directorio de destino de Simpler Off Menu.
 SIMPLER_OFF_MENU_DST="${PREFIX_EXT_DST}/SimplerOffMenu.kerkus@pm.me"
+
+# Url de descarga de Oh My Zsh.
+OH_MY_ZSH_URL='http://install.ohmyz.sh'
+
+# Url de descarga de Syntax Highlighting.
+ZSH_SYNTAX_HIGHLIGHTING_URL='https://github.com/zsh-users/zsh-syntax-highlighting.git'
+
+# Url de descarga de Powerlevel10k.
+POWERLEVEL10K_URL='https://github.com/romkatv/powerlevel10k.git'
+
+# Url de descarga de exa.
+EXA_URL='https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2'
+
+# Version de Hub
+HUB_VERSION="2.8.3"

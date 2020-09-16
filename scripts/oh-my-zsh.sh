@@ -8,11 +8,6 @@
 
 # Name:Instalación de configuración de zsh Oh My ZSH
 
-OH_MY_ZSH_URL='http://install.ohmyz.sh'
-ZSH_SYNTAX_HIGHLIGHTING_URL='https://github.com/zsh-users/zsh-syntax-highlighting.git'
-POWERLEVEL10K_URL='https://github.com/romkatv/powerlevel10k.git'
-EXA_URL='https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2'
-
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
     message "Instalando Oh My ZSH, espere ..."
     run curl -sL ${OH_MY_ZSH_URL} | sh

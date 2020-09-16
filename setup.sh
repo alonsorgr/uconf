@@ -14,7 +14,7 @@ source "${__DIR__}/lib/args.sh"
 
 # Importación de parámetros globales.
 source "${__DIR__}/lib/params.sh"
-echo ${yes}
+
 # Comprobación de parámetros
 check_param $1
 check_param $2
