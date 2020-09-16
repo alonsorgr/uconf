@@ -167,10 +167,10 @@ if [ -n "${TOKEN}" ]; then
     git config --global hub.protocol https
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
     message "Creando variable de entorno GITHUB_{TOKEN}, espere ..."
-    echo "export GITHUB_{TOKEN}=${TOKEN}" > ${DEST}
+    echo "export GITHUB_TOKEN=${TOKEN}" > ${DEST}
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/jekyll.zsh
     message "Creando variable de entorno JEKYLL_GITHUB_{TOKEN}, espere ..."
-    echo "export JEKYLL_GITHUB_{TOKEN}=${TOKEN}" > ${DEST}
+    echo "export JEKYLL_GITHUB_TOKEN=${TOKEN}" > ${DEST}
 fi
 
 if [ -n "${GITHUB_USER}" ] && [ -n "${TOKEN}" ]; then
