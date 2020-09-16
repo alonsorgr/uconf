@@ -7,8 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-#SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory git-config'
-SCRIPTS='git-config'
+SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory git-config'
 
 # Redireccion a null.
 NULL='/dev/null'
