@@ -9,6 +9,9 @@
 # Constante de directorio raiź del script.
 readonly __DIR__=$(dirname "$(readlink -f "$0")")
 
+# Creación de fichero log.
+[ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
+
 # Importación de comprobación de parámetros.
 source "${__DIR__}/lib/args.sh"
 

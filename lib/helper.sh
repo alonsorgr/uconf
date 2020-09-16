@@ -73,10 +73,9 @@ function errors()
 #   @param $1     Texto que se mostrará en el mensaje de error y en el log.
 {
     if [ $? -ne 0 ]; then
-        echo $(!!) >> "${__DIR__}/log"
+        #echo $(!!) >> "${__DIR__}/log"
         error_message "$1"
-        [ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
-        if [ "${exit}" == '--exit' ]; t hen
+        if [ "${exit}" == '--exit' ]; then
             yes_no_message exit "$(message "Ocurrió un error inesperado. \n¿Desea cancelar la instalación y salir? (S/n): ")"
         fi
     fi
