@@ -75,7 +75,7 @@ function errors()
     if [ $? -ne 0 ]; then
         error_message "$1"
         [ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
-        echo "$1" >> "${__DIR__}/log"
+        echo $(!!) >> "${__DIR__}/log"
         if [ "${exit}" == '--exit' ]; then
             yes_no_message exit "$(message "Ocurrió un error inesperado. \n¿Desea cancelar la instalación y salir? (S/n): ")"
         fi
