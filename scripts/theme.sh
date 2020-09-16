@@ -41,5 +41,5 @@ run gsettings get org.gnome.desktop.background picture-uri 'file:///home/alonso/
 errors "Error al establecer el fondo de escritorio"
 
 message "Estableciéndo el fondo de salva pantallas, espere ..."
-run gsettings get org.gnome.desktop.background picture-uri 'file:///home/alonso/.uconf/config/screensaver.jpg'
+run gsettings get org.gnome.desktop.screensaver picture-uri 'file:///home/alonso/.uconf/config/screensaver.jpg'
 errors "Error al establecer el fondo de salva pantallas"
