@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura oh-my-zsh directory git-config'
+SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura directory'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -65,9 +65,6 @@ DST_FONTS="${HOME}/.local/share/fonts"
 
 # Archivo de configuración de GDM
 GDM_CONF='/etc/gdm3/custom.conf'
-
-# Ruta del ejecutable del emulador de terminal Sakura.
-SAKURA_BIN_PATH="/usr/bin/sakura"
 
 # Archivo de configuración css gtk-3.0.
 GTK_CONFIG="${HOME}/.config/gtk-3.0/gtk.css"

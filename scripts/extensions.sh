@@ -25,7 +25,8 @@ function _install() {
 }
 
 function _clone() {
-    [ -d "$2" ] && message "Eliminando instalación anterior de $3, espere ..." && run rm -rf "$2"
+    message "Eliminando instalación anterior de $3, espere ..."
+    [ -d "$2" ] && run rm -rf "$2"
     errors "Error al eliminar la instalación anterior de la extensión $3"
 
     message "Descargando e instalando $3, espere ..."

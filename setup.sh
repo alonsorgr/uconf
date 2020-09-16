@@ -9,9 +9,6 @@
 # Constante de directorio raiź del script.
 readonly __DIR__=$(dirname "$(readlink -f "$0")")
 
-# Creación de fichero log.
-[ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
-
 # Importación de comprobación de parámetros.
 source "${__DIR__}/lib/args.sh"
 
@@ -26,14 +23,17 @@ check_param $3
 # Importación de librería auxiliar.
 source "${__DIR__}/lib/helper.sh"
 
-# Elimina el fichero log de la instalación anterior.
-clear_log
-
 # Mensaje de bienvenida.
 information_message "\nConfiguración personal de ${OS_VERSION}"
 
 # Mensaje de espera de carga de recursos externos.
 message "Inicializando la configuración, espere ...\n"
+
+# Elimina el fichero log de la instalación anterior.
+clear_log
+
+# Creación de fichero log.
+[ ! -f "${__DIR__}/log" ] && touch "${__DIR__}/log"
 
 # Carga de recursos externos.
 source "${__DIR__}/lib/autoload.sh"
