@@ -55,15 +55,6 @@ PACKAGES_LIST=$(cat ${__DIR__}/config/packages.cfg)
 # Número de paquetes a instalar
 PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
 
-# Lista de tipografías.
-FONTS_LIST=$(cat "${__DIR__}/config/fonts.cfg")
-
-# Directorio de origen de tipografías.
-SRC_FONTS="${__DIR__}/fonts"
-
-# Directorio de destino de tipografías.
-DST_FONTS="${HOME}/.local/share/fonts"
-
 # Archivo de configuración de GDM
 GDM_CONF='/etc/gdm3/custom.conf'
 
@@ -105,18 +96,6 @@ SCREENSHOT_TOOL_DST="${PREFIX_EXT_DST}/gnome-shell-screenshot@ttll.de"
 
 # Directorio de destino de Simpler Off Menu.
 SIMPLER_OFF_MENU_DST="${PREFIX_EXT_DST}/SimplerOffMenu.kerkus@pm.me"
-
-# Url de descarga de Oh My Zsh.
-OH_MY_ZSH_URL='http://install.ohmyz.sh'
-
-# Url de descarga de Syntax Highlighting.
-ZSH_SYNTAX_HIGHLIGHTING_URL='https://github.com/zsh-users/zsh-syntax-highlighting.git'
-
-# Url de descarga de Powerlevel10k.
-POWERLEVEL10K_URL='https://github.com/romkatv/powerlevel10k.git'
-
-# Url de descarga de exa.
-EXA_URL='https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2'
 
 # Directorio de ricpelo/conf
 RICPELO_CONF="${HOME}/.conf"
