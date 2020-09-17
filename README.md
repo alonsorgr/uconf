@@ -41,15 +41,14 @@ $ ./setup.sh --exit --verbose --yes
 ```
 ***
 ## Incluye
+- ### Script de personalización de [ricpelo/conf](https://github.com/ricpelo/conf)
+  - Información sobre el script de ```ricpelo/conf``` en [README.md](https://github.com/ricpelo/conf/blob/master/README.md)
+  - Se eliminan paquetes innecesarios para mi configuración
+  - Se inicializa el script de GitHub al final de la instalación de este script
+
 - ### Controladores teclado Logitech K290 para configuración de la tecla FN
   - https://github.com/alonsorgr/k290-fnkeyctl
 
-- ### Tipografías:
-  - Fira Code
-  - Input Mono
-  - Mononoki
-  - Nerd Fonts
-  - Powerline Fonts
 
 - ### Tema GTK Plata personalizado
   - https://gitlab.com/tista500/plata-theme
@@ -58,23 +57,23 @@ $ ./setup.sh --exit --verbose --yes
     - ```accent='#ffffff'```
     - ```suggestion='#cccccc'```
 - ### GDM
-  - Color de fondo de pantalla='#080808'
+  - Color de fondo de pantalla=```'#080808'```
   - Desactivado WayLand
 
 - ### Iconos Papirus
   - https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
 - ### Extensiones GNOME
-  - Clipboard Indicator
-  - Dash To Panel
-  - Easy Screen Cast
-  - Screenshot Tool
-  - Simpler Off Menu
-  - User Themes
+  - [Clipboard Indicator](https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator)
+  - [Dash To Panel](https://github.com/home-sweet-gnome/dash-to-panel)
+  - [Easy Screen Cast](https://github.com/EasyScreenCast/EasyScreenCast)
+  - [Screenshot Tool](https://github.com/OttoAllmendinger/gnome-shell-screenshot)
+  - [Simpler Off Menu](https://gitlab.com/K3rcus/simpler-off-menu)
+  - [User Themes](https://gitlab.gnome.org/GNOME/gnome-shell-extensions)
 
 - ### Terminal
-  - Sakura como emulador de terminal
-  - Shell Zsh con Oh-My-Zsh
+  - Configuración de Sakura
+  - Confiiguración de Oh-My-Zsh
 ---
 
 ## Consejos
