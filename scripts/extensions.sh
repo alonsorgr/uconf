@@ -10,7 +10,7 @@
 
 function _install() {
     local temp="$(mktemp -d)"
-    message "Descargándo extensión de GNOME $2, espere ..."
+    message "Descargando extensión de GNOME $2, espere ..."
     run git clone "$1" ${temp}
     errors "Error al descargar la extensión de GNOME $2"
 

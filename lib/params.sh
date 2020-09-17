@@ -7,7 +7,8 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages fnkey extensions theme gtk fonts icons wayland dconf sakura directory'
+SCRIPTS='conf packages fnkey extensions theme gtk icons wayland dconf sakura directory'
+# SCRIPTS='conf'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -117,5 +118,8 @@ POWERLEVEL10K_URL='https://github.com/romkatv/powerlevel10k.git'
 # Url de descarga de exa.
 EXA_URL='https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2'
 
-# Version de Hub
-HUB_VERSION="2.8.3"
+# Directorio de ricpelo/conf
+RICPELO_CONF="${HOME}/.conf"
+
+# Repositorio de ricpelo/conf
+RICPELO_REPO='https://github.com/ricpelo/conf.git'

@@ -73,7 +73,7 @@ function errors()
 #   @param $1     Texto que se mostrará en el mensaje de error y en el log.
 {
     if [ $? -ne 0 ]; then
-        #echo $(!!) >> "${__DIR__}/log"
+        echo -e "$1" >> "${__DIR__}/log"
         error_message "$1"
         if [ "${exit}" == '--exit' ]; then
             yes_no_message exit "$(message "Ocurrió un error inesperado. \n¿Desea cancelar la instalación y salir? (S/n): ")"
@@ -231,66 +231,18 @@ function backup_and_link()
     ln -sf ${path} ${file}
 }
 
-function question()
+function clone() 
 ##
-#   Realiza una pregunta de si o no para configuración de Git.
-#   @param $1   Tipo de pregunta.
-#   @param $2   Texto que se mostrará en la pregunta.
-#   @param $3   Valor de la respuesta.
+#   Clona un repositorio.
+#   @param $1   Url del repositorio.
+#   @param $1   Destino del clonado del repositorio.
+#   @param $1   Nombre del repositorio.
 {
-    local _SN
-    if [ -n "$4" ]; then
-        _SN="$3"
-    else
-        sn=$([ "$3" = "S" ] && echo -e "(S/n): " || echo -e "(S/n): ")
-        read -p "$2 ${sn}" _SN
-        _SN=$(echo "$_SN" | tr '[:lower:]' '[:upper:]')
-        if [ "$3" = "S" ]; then
-            [ "$_SN" != "N" ] && _SN="S"
-        else
-            [ "$_SN" != "S" ] && _SN="N"
-        fi
-    fi
-    eval "$1=$_SN"
-}
+    message "Eliminando el repositorio anterior de $3, espere ..."
+    [ -d "$2" ] && run rm -rf "$2"
+    errors "Error al eliminar la el repositorio anterior de $3"
 
-function make_sure_new_line()
-##
-#   Asegura salto de línea.
-#   @param $1   Fichero.
-{
-    if [ "`tail -c1 $1`" != "" ]; then
-        echo "" >> $1
-    fi
-}
-
-function disable_sudo()
-##
-#   Desactiva el uso de sudo para un binario.
-#   @param $1   Binario.
-{
-    local L="%sudo	ALL=!$1"
-    local F=/etc/sudoers.d/$(echo $1 | tr "/" "-" | cut -c2-)
-    if [ ! -f "$F" ]; then
-        message "Desactivando el uso de $1 con sudo..."
-        echo "$L" | sudo tee $F > /dev/null
-        sudo chmod 440 $F
-    else
-        message "Uso de $1 con sudo ya desactivado."
-    fi
-}
-
-function netrc()
-##
-#   Crea entrada a netrc.
-#   @param $1   Dominio.
-#   @param $2   Usuario GitHub.
-#   @param $1   Token de GitHub.
-{
-    if grep -qs "machine $1" ~/.netrc; then
-        perl -i -0pe "s/machine $1\n  login \w+\n  password \w+/machine $1\n  login $2\n  password $3/" ~/.netrc
-    else
-        make_sure_new_line "${HOME}/.netrc"
-        echo "machine $1\n  login $2\n  password $3" >> ~/.netrc
-    fi
+    message "Clonando repositorio $3, espere ..."
+    run git clone --recursive "$1" "$2"
+    errors "Error al clonar el repositorio $3"
 }

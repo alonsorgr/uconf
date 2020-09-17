@@ -56,8 +56,28 @@ function init()
 #   Inicializa la ejecución de los scripts
 init
 
-if [ -f "${__DIR__}/log" ]; then
+# Comprueba si hay errores
+if [ "$(cat "${__DIR__}/log" | wc -l)" -ne 0 ]; then
     error_message "\nInstalación completada con errores. Para más información, consultar el log"
 else
-    success_message "\nInstalación terminada satisfactoriamente"
+    success_message "\nInstalación terminada satisfactoriamente\n"
 fi
+
+# Inicializa la configuración de GitHub
+function _git_config()
+{
+    (cd ${RICPELO_CONF}/scripts/ && ./git-config.sh)
+}
+
+information_message "Configuración de cuenta de usuario GitHub"
+yes_no_message _git_config "¿Desea configurar la cuenta de usuario GitHub? (S/n): "
+
+# Pregunta si desea reiniciar el sistema operativo.
+function _restart()
+{
+    sudo init 6
+}
+
+information_message "\nConfiguración terminada"
+message "Para que todos los cambios surgan efecto, reinicie el sistema por favor ..."
+yes_no_message _restart "¿Desea reiniciar el equipo? (S/n): "
