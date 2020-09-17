@@ -37,9 +37,9 @@ run gsettings set org.gnome.shell.extensions.user-theme name 'Plata-Noir'
 errors "Error al activar el tema GTK plata en pantalla de inicio de sesión"
 
 message "Estableciéndo el fondo de escritorio, espere ..."
-run gsettings set org.gnome.desktop.background picture-uri 'file:///home/alonso/.uconf/config/background.jpg'
+run gsettings set org.gnome.desktop.background picture-uri "file:///home/${USER}/.uconf/config/background.jpg"
 errors "Error al establecer el fondo de escritorio"
 
 message "Estableciéndo el fondo de salva pantallas, espere ..."
-run gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/alonso/.uconf/config/screensaver.jpg'
+run gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/${USER}/.uconf/config/screensaver.jpg"
 errors "Error al establecer el fondo de salva pantallas"
