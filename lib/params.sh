@@ -62,7 +62,7 @@ GDM_CONF='/etc/gdm3/custom.conf'
 GTK_CONFIG="${HOME}/.config/gtk-3.0/gtk.css"
 
 # Configuración de headerbar css gtk-3.0.
-GTK_HEADERBAR_URL='https://gist.githubusercontent.com/alonsorgr/3f6a63bb39bc092f16894f3fabb1bc86/raw/c4fabdcadf39918c11d25ab2ede79251ff06a879/gtk.css'
+GTK_HEADERBAR_URL='https://gist.githubusercontent.com/alonsorgr/3f6a63bb39bc092f16894f3fabb1bc86/raw/c636b3c5589a88b433b9c42338fd2ae3c2aa5116/gtk.css'
 
 # Url del repositorio de la extensión Clipboard Indicator.
 CLIPBOARD_INDICATOR_URL='https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git'
