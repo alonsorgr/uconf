@@ -240,8 +240,7 @@ function clone()
 {
     message "Eliminando el repositorio anterior de $3, espere ..."
     [ -d "$2" ] && run rm -rf "$2"
-    errors "Error al eliminar la el repositorio anterior de $3"
-
+    
     message "Clonando repositorio $3, espere ..."
     run git clone --recursive "$1" "$2"
     errors "Error al clonar el repositorio $3"
