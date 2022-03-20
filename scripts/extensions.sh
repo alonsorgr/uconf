@@ -42,8 +42,6 @@ _clone ${CLIPBOARD_INDICATOR_URL} ${CLIPBOARD_INDICATOR_DST} "Clipboard Indicato
 _init 'clipboard-indicator@tudmotu.com' 'Clipboard Indicator'
 _install ${DASH_TO_PANEL_URL} "Dash To Panel"
 _init 'dash-to-panel@jderose9.github.com' 'Dash To Panel'
-_install ${EASY_SCREEN_CAST_URL} "Easy Screen Cast"
-_init 'EasyScreenCast@iacopodeenosee.gmail.com' 'Easy Screen Cast'
 _install ${SCREENSHOT_URL} "Screenshot Tool"
 _init 'gnome-shell-screenshot@ttll.de' 'Screenshot Tool'
 message "Aplicando traducciones al español a Screenshot Tool, espere ..."
