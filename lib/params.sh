@@ -100,4 +100,4 @@ SIMPLER_OFF_MENU_DST="${PREFIX_EXT_DST}/SimplerOffMenu.kerkus@pm.me"
 RICPELO_CONF="${HOME}/.conf"
 
 # Repositorio de ricpelo/conf
-RICPELO_REPO='https://github.com/ricpelo/conf.git'
+RICPELO_REPO='https://github.com/alonsorgr/conf.git'
