@@ -40,8 +40,8 @@ function _init() {
 
 _clone ${CLIPBOARD_INDICATOR_URL} ${CLIPBOARD_INDICATOR_DST} "Clipboard Indicator"
 _init 'clipboard-indicator@tudmotu.com' 'Clipboard Indicator'
-_install ${DASH_TO_PANEL_URL} "Dash To Panel"
-_init 'dash-to-panel@jderose9.github.com' 'Dash To Panel'
+#_install ${DASH_TO_PANEL_URL} "Dash To Panel"
+#_init 'dash-to-panel@jderose9.github.com' 'Dash To Panel'
 _install ${SCREENSHOT_URL} "Screenshot Tool"
 _init 'gnome-shell-screenshot@ttll.de' 'Screenshot Tool'
 message "Aplicando traducciones al español a Screenshot Tool, espere ..."
