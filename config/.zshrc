@@ -5,11 +5,12 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Opciones para el tema Powerlevel9k:
 POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv vi_mode context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="red"
 POWERLEVEL9K_CONTEXT_REMOTE_BACKGROUND="white"
@@ -107,10 +108,12 @@ plugins=(git command-not-found composer history-substring-search z zsh-syntax-hi
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
+UCONF_PATH='Repositorios/uconf'
+
 local ANTES=$(mktemp) && set > $ANTES
 emulate sh -c 'source /etc/profile'
 local DESPUES=$(mktemp) && set > $DESPUES
-unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
+#unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
 rm -f $ANTES $DESPUES && unset ANTES DESPUES
 
 source $ZSH/oh-my-zsh.sh
@@ -161,6 +164,14 @@ export LOCAL_GIT_DIRECTORY=/usr
 eval `lesspipe`
 eval `dircolors ~/.dircolors`
 
+pingbg() {
+    ping "$1" &
+}
+
+killjobs() {
+    kill $(jobs -p) 2>/dev/null
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -185,8 +196,10 @@ alias rmf="rm -rf"
 alias glg="git lg"
 alias apagar="init 0"
 alias reiniciar="init 6"
-alias upd="sudo apt update && sudo apt upgrade -y && sudo apt autoremove && sudo apt autoclean"
-alias tfg="cd /home/alonso/Web/venenciame && code . && google-chrome http://localhost:8080 && ./yii serve"
+alias upd="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y"
+alias rundev="npm run dev &"
+alias stopdev="kill %1"
+alias ping="pingbg"
 
 bindkey -v
 export KEYTIMEOUT=1
@@ -207,3 +220,9 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 bindkey -M vicmd "^[[3~" delete-char
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH=~/.console-ninja/.bin:$PATH
