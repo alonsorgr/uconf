@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='conf packages fnkey extensions theme gtk icons wayland dconf sakura directory'
+SCRIPTS='packages extensions theme icons wayland dconf sakura directory'
 
 # Redireccion a null.
 NULL='/dev/null'
