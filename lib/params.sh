@@ -54,6 +54,12 @@ PACKAGES_LIST=$(cat ${__DIR__}/config/packages.cfg)
 # Número de paquetes a instalar
 PACKAGES_COUNT=$(echo ${PACKAGES_LIST} | wc -w)
 
+# Lista de extensiones de gnome a instalar
+GNOME_EXTENSIONS_LIST=$(cat ${__DIR__}/config/gnome-extensions.cfg)
+
+# Número de extensiones de gnome a instalar
+GNOME_EXTENSIONS_COUNT=$(echo ${GNOME_EXTENSIONS_LIST} | wc -w)
+
 # Archivo de configuración de GDM
 GDM_CONF='/etc/gdm3/custom.conf'
 

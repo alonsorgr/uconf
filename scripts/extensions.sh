@@ -8,45 +8,69 @@
 
 # Name:Extensiones de entorno de esctritorio GNOME
 
-function _install() {
-    local temp="$(mktemp -d)"
-    message "Descargando extensión de GNOME $2, espere ..."
-    run git clone "$1" ${temp}
-    errors "Error al descargar la extensión de GNOME $2"
+function install() {
+# Lista de UUIDs de las extensiones
+array=( color-picker@tuberry
+dash-to-panel@jderose9.github.com
+EasyScreenCast@iacopodeenosee.gmail.com
+quick-settings-tweaks@qwreey
+quick-settings-avatar@d-go )
 
-    message "Configurándo extensión de GNOME $2, espere ..."
-    run make -C ${temp}
-    errors "Error al configurar la extensión de GNOME $2"
+for i in "${array[@]}"
+do
+    # Realizar búsqueda de la extensión en la API
+    SEARCH_RESULT=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=${i}" | jq '.extensions[] | select(.uuid == "'${i}'")')
 
-    message "Instalando extensión de GNOME $2, espere ..."
-    run make install -C ${temp}
-    errors "Error al instalar la extensión de GNOME $2"
-    rm -rf ${temp}
+    # Verificar si la extensión fue encontrada
+    if [ -z "$SEARCH_RESULT" ]; then
+        echo "No se pudo obtener la información de la extensión $i"
+        continue
+    fi
+
+    EXTENSION_ID=$(echo "$SEARCH_RESULT" | jq -r '.uuid')
+
+    # Obtener la última versión disponible de la extensión (sin importar la versión de GNOME)
+    VERSION_TAG=$(echo "$SEARCH_RESULT" | jq '.shell_version_map | map(.pk) | max')
+
+    # Verificar si se encontró un version_tag
+    if [ -z "$VERSION_TAG" ]; then
+        echo "No se pudo obtener el version_tag para la extensión $i"
+        continue
+    fi
+
+    # Descargar la extensión
+    wget -O "${EXTENSION_ID}.zip" "https://extensions.gnome.org/download-extension/${EXTENSION_ID}.shell-extension.zip?version_tag=$VERSION_TAG"
+    
+    # Verificar si el archivo ZIP se descargó correctamente
+    if [ ! -f "${EXTENSION_ID}.zip" ] || [ ! -s "${EXTENSION_ID}.zip" ]; then
+        echo "La descarga de la extensión $EXTENSION_ID falló."
+        continue
+    fi
+
+    # Instalar la extensión
+    gnome-extensions install --force "${EXTENSION_ID}.zip"
+
+    # Verificar si la extensión se instaló correctamente
+    if ! gnome-extensions list | grep --quiet "${EXTENSION_ID}"; then
+        echo "La instalación de la extensión $EXTENSION_ID falló."
+        continue
+    fi
+
+    # Activar la extensión
+    gnome-extensions enable "${EXTENSION_ID}"
+
+    # Verificar si la extensión se activó correctamente
+    if gnome-extensions info "${EXTENSION_ID}" | grep --quiet "disabled"; then
+        echo "La activación de la extensión $EXTENSION_ID falló."
+        continue
+    fi
+
+    # Eliminar el archivo ZIP descargado
+    rm "${EXTENSION_ID}.zip"
+
+    echo "Extensión $EXTENSION_ID instalada y activada con éxito."
+done
 }
 
-function _clone() {
-    message "Eliminando instalación anterior de $3, espere ..."
-    [ -d "$2" ] && run rm -rf "$2"
-    message "Descargando e instalando $3, espere ..."
-    run git clone "$1" "$2"
-    errors "Error al descargar e instalar la extensión $3"
-}
+install
 
-function _init() {
-    message "Inicializando extensión $2, espere ..."
-    run gnome-extensions enable "$1"
-    errors "Error al inicializar la extensión $2"
-}
-
-_clone ${CLIPBOARD_INDICATOR_URL} ${CLIPBOARD_INDICATOR_DST} "Clipboard Indicator"
-_init 'clipboard-indicator@tudmotu.com' 'Clipboard Indicator'
-#_install ${DASH_TO_PANEL_URL} "Dash To Panel"
-#_init 'dash-to-panel@jderose9.github.com' 'Dash To Panel'
-_install ${SCREENSHOT_URL} "Screenshot Tool"
-_init 'gnome-shell-screenshot@ttll.de' 'Screenshot Tool'
-message "Aplicando traducciones al español a Screenshot Tool, espere ..."
-run cp -r "${SCREENSHOT_TOOL_CONFIG}"/* "${SCREENSHOT_TOOL_DST}"
-errors "Error al aplicar las traducciones a Screenshot Tool"
-_clone ${SIMPLER_OF_MENU_URL} ${SIMPLER_OFF_MENU_DST} "Simpler Off Menu"
-_init 'SimplerOffMenu.kerkus@pm.me' 'Simpler Off Menu'
-_init 'user-theme@gnome-shell-extensions.gcampax.github.com' 'User Themes'
