@@ -47,8 +47,4 @@ bar::stop
 deb_url_install "${GOOGLE_CHROME_DEB_URL}" "(google-chrome-estable)" "google-chrome-stable"
 deb_url_install "${VS_CODE_DEB_URL}" "(visual-studio-code)" "code"
 
-message "Instalando extensión settings sync, espere ..."
-run code --install-extension Shan.code-settings-sync
-errors "Error al instalar la extension settings sync"
-
 apt_clean
