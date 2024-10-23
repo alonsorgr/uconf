@@ -7,13 +7,13 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages extensions theme icons wayland dconf terminal fonts directory'
+SCRIPTS='packages extensions theme icons dconf terminal fonts directory wayland'
 
 # Redireccion a null.
 NULL='/dev/null'
 
 # Versión recomendada para la instalación del script.
-OS_VERSION='20.04'
+OS_VERSION='24.04'
 
 # Url del recurso de barra de progreso.
 PROGRESSBAR='https://gist.githubusercontent.com/alonsorgr/74d6d02ffeb6b4d3d23cc56933234f5c/raw/5c2b8a821ccec866f86136bc8c249c0850314bec/progressbar.sh'
