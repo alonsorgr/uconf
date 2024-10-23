@@ -12,6 +12,14 @@ message "Configurando e instalando tema GTK Material Monokai Metallian, espere .
 run "${__DIR__}/theme/material-monokai-metallian/install.sh -n Material-Monokai-Metallian -t grey -c dark -l --size standard --tweaks submenu primary solid"
 errors "Error al configurar el tema GTK Plata"
 
+message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
+run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/usr/share/themes" 
+errors "Error al instalar el tema GTK Material Monokai Metallian para todos los usuarios"
+
+message "Instalando tema GTK Material Monokai Metallian para root, espere ..."
+run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/root/.themes" 
+errors "Error al instalar el tema GTK Material Monokai Metallian para root"
+
 message "Activando tema GTK Material-Monokai-Metallian generado, espere ..."
 run gsettings set org.gnome.desktop.interface gtk-theme 'Material-Monokai-Metallian-Grey-Dark'
 errors "Error al activar el tema GTK Material-Monokai-Metallian"
