@@ -7,7 +7,8 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='postgresql packages extensions theme icons dconf terminal fonts directory wayland'
+#SCRIPTS='postgresql packages extensions theme icons dconf terminal fonts directory wayland git'
+SCRIPTS='git'
 
 # Redireccion a null.
 NULL='/dev/null'

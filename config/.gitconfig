@@ -1,0 +1,22 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
+[user]
+	name = &>
+	email = &>
+	name = &>
+	name = &>
+	email = &>
+	name = &>
+	email = &>
+	name = &>
+[github]
+	user = &>
+	token = &>
+[ghi]
+	token = &>
+[hub]
+	protocol = https
+[credential]
+	helper = store

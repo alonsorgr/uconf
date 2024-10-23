@@ -63,15 +63,6 @@ else
     success_message "\nInstalación terminada satisfactoriamente\n"
 fi
 
-# Inicializa la configuración de GitHub
-function _git_config()
-{
-    (cd ${RICPELO_CONF}/scripts/ && ./git-config.sh)
-}
-
-information_message "Configuración de cuenta de usuario GitHub"
-yes_no_message _git_config "¿Desea configurar la cuenta de usuario GitHub? (S/n): "
-
 # Pregunta si desea reiniciar el sistema operativo.
 function _restart()
 {
