@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages extensions theme icons wayland dconf terminal directory'
+SCRIPTS='packages extensions theme icons wayland dconf terminal fonts directory'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -59,6 +59,10 @@ GNOME_EXTENSIONS_LIST=$(cat ${__DIR__}/config/gnome-extensions.cfg)
 
 # Número de extensiones de gnome a instalar
 GNOME_EXTENSIONS_COUNT=$(echo ${GNOME_EXTENSIONS_LIST} | wc -w)
+
+FONTS_LIST="fira-code input-mono menlo mononoki nerd-fonts"
+
+FONTS_COUNT=$(echo ${FONTS_LIST} | wc -w)
 
 # Archivo de configuración de GDM
 GDM_CONF='/etc/gdm3/custom.conf'
