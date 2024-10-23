@@ -7,7 +7,7 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages extensions theme icons dconf terminal fonts directory wayland'
+SCRIPTS='postgresql packages extensions theme icons dconf terminal fonts directory wayland'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -41,6 +41,12 @@ GITHUB_CLI_URL='https://cli.github.com/packages'
 
 # Clave del repositorio de GitHub CLI.
 GITHUB_CLI_KEY='C99B11DEB97541F0'
+
+# Última versión de PostgreSQL
+POSTGRESQL_VERSION="17"
+
+# Directorio de configuración de PostgreSQL
+POSTGRESQL_CONFIG="/etc/postgresql/${POSTGRESQL_VERSION}/main/postgresql.conf"
 
 # Lista de repositorios a instalar
 REPOSITORIES_LIST=$(cat ${__DIR__}/config/repositories.cfg)

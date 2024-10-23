@@ -47,4 +47,23 @@ bar::stop
 deb_url_install "${GOOGLE_CHROME_DEB_URL}" "(google-chrome-estable)" "google-chrome-stable"
 deb_url_install "${VS_CODE_DEB_URL}" "(visual-studio-code)" "code"
 
+message "Activando repositorio para PostgreSQL, espere ..."
+run sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+errors "Error al activar el repositorio de PostgreSQL"
+
+message "Importando repositorio para PostgreSQL, espere ..."
+run wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+errors "Error al importar el repositorio de PostgreSQL"
+
+apt_install postgresql-${POSTGRESQL_VERSION}
+apt_install postgresql-client-${POSTGRESQL_VERSION}
+
+param_postgresql "intervalstyle" "'iso_8601'" ${POSTGRESQL_CONFIG}
+param_postgresql "timezone" "'UTC'" ${POSTGRESQL_CONFIG}
+param_postgresql "lc_messages" "'en_US.UTF-8'" ${POSTGRESQL_CONFIG}
+param_postgresql "lc_monetary" "'en_US.UTF-8'" ${POSTGRESQL_CONFIG}
+param_postgresql "lc_numeric" "'en_US.UTF-8'" ${POSTGRESQL_CONFIG}
+param_postgresql "lc_time" "'en_US.UTF-8'" ${POSTGRESQL_CONFIG}
+param_postgresql "default_text_search_config" "'pg_catalog.english'" ${POSTGRESQL_CONFIG}
+
 apt_clean
