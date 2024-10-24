@@ -162,7 +162,6 @@ export LOCAL_GIT_DIRECTORY=/usr
 # export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
 
 eval `lesspipe`
-eval `dircolors ~/.dircolors`
 
 pingbg() {
     ping "$1" &
@@ -185,9 +184,7 @@ killjobs() {
 # alias tmux="tmux -2"
 
 # alias ls="ls --color=tty --group-directories-first"
-alias ls="exa --icons --color=auto --group-directories-first"
-alias l="exa --icons --color=auto --group-directories-first --all --all --long --header --binary --group --git"
-alias ll="exa --icons --color=auto --group-directories-first --grid --long --binary --git"
+
 alias cd..="cd .."
 alias rm="rm -i"
 alias cp="cp -i"

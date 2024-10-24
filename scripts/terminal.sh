@@ -8,15 +8,6 @@
 
 # Name:Configuración del emulador de terminal
 
-mkdir -p ~/.config
-message "Creando enlace simbólico para la configuración del emulador de terminal sakura, espere ..."
-run backup_and_link sakura .config
-errors "Error al crear el enlace simbólico para la configuración del emulador de terminal sakura"
-
-message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
-run backup_and_link .zshrc
-errors "Error al crear el enlace simbólico para la configuración de oh my zsh"
-
 message "Instalando Warp Terminal como termninal predeterminado, espere ..."
 run sudo update-alternatives --quiet --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/warp-terminal 100
 errors "Error al instalar Warp Terminal como predeterminado del sistema"
@@ -61,3 +52,12 @@ config_zsh()
 }
 
 config_zsh
+
+mkdir -p ~/.config
+message "Creando enlace simbólico para la configuración del emulador de terminal sakura, espere ..."
+run backup_and_link sakura .config
+errors "Error al crear el enlace simbólico para la configuración del emulador de terminal sakura"
+
+message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
+run backup_and_link .zshrc
+errors "Error al crear el enlace simbólico para la configuración de oh my zsh"
