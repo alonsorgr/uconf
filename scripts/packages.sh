@@ -19,8 +19,18 @@ if dpkg -s snapd >/dev/null 2>&1; then
         errors "Error al eliminar el paquete snap ${snap}"
     done
     message "Eliminando Snap del sistema, espere ..."
-    run sudo apt -y purge snapd
+    run sudo apt purge -y purge snapd
     errors "Error al eliminar Snap del sistema"
+
+    message "Eliminando rastros de Snap del sistema, espere ..."
+    run sudo rm -rf ~/snap /var/cache/snapd /var/snap /var/lib/snapd
+    errors "Error al eliminar rastros de Snap del sistema"
+    
+    sudo cat >/etc/apt/preferences.d/nosnap.pref << 'EOF'
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+EOF
 fi
 
 message "Agregando clave de repositorio para GitHub CLI, espere ..."

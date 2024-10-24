@@ -29,7 +29,7 @@ ACCENT_COLOR=#FFFFFF
 SUGGESTION_COLOR=#CCCCCC
 
 # Lista de paquetes Snap para la eliminación de Snap del sistema.
-SNAP_PACKAGES='bare core22 firefox firmware-updater gnome-42-2204 gtk-common-themes gtk-theme-orchis snap-store snapd snapd-desktop-integration'
+SNAP_PACKAGES='firefox firmware-updater gnome-42-2204 gtk-common-themes gtk-theme-orchis snap-store snapd-desktop-integration bare core22'
 
 # Url de descarga directa de Google Chrome
 GOOGLE_CHROME_DEB_URL='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
