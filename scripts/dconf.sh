@@ -9,5 +9,5 @@
 # Name:Importación de configuración de GNOME
 
 message "Importando configuración de GNOME, espere ..."
-run dconf load / < "${__DIR__}/config/gnome.cfg"
+run dconf load / < "${__DIR__}/config/dconf.cfg"
 errors "Error al importar la configuración de GNOME"
