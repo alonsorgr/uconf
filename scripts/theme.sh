@@ -9,11 +9,11 @@
 # Name:Tema Material Monokai Metallian
 
 if [ ! -d "/root/.themes" ]; then
-    mkdir -p "/root/.themes"
+    sudo mkdir -p "/root/.themes"
 fi
 
 if [ ! -d "/usr/share/themes" ]; then
-    mkdir -p "/usr/share/themes"
+    sudo mkdir -p "/usr/share/themes"
 fi
 
 message "Configurando e instalando tema GTK Material Monokai Metallian, espere ..."
