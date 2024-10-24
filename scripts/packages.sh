@@ -29,14 +29,6 @@ Pin: release a=*
 Pin-Priority: -10" | sudo tee /etc/apt/preferences.d/nosnap.pref > /dev/null
 fi
 
-message "Agregando clave de repositorio para GitHub CLI, espere ..."
-run curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /usr/share/keyrings/githubcli-archive-keyring.gpg > /dev/null
-errors "Error al agregar la clave de repositorio para GitHub CLI"
-
-message "Activando repositorio para GitHub CLI, espere ..."
-run echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-errors "Error al activar el repositorio de GitHub CLI"
-
 message "Activando repositorio para PostgreSQL, espere ..."
 postgresql_sources_list='/etc/apt/sources.list.d/pgdg.list'
 echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" | sudo tee ${postgresql_sources_list} > /dev/null
