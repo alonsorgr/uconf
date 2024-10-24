@@ -22,11 +22,15 @@ errors "Error al configurar el tema GTK Plata"
 
 message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
 run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/usr/share/themes" 
-errors "Error al instalar el tema GTK Material Monokai Metallian para todos los usuarios"
+errors "Error al instalar tema GTK Material Monokai Metallian para todos los usuarios"
 
 message "Instalando tema GTK Material Monokai Metallian para root, espere ..."
 run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/root/.themes" 
-errors "Error al instalar el tema GTK Material Monokai Metallian para root"
+errors "Error al instalar tema GTK Material Monokai Metallian para root"
+
+message "Creando enlace Libadwaita para tema GTK Material Monokai Metallian para root, espere ..."
+run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0" "/root/.config" 
+errors "Error al crear el enlace Libadwaita para tema GTK Material Monokai Metallian para root"
 
 message "Activando tema GTK Material-Monokai-Metallian generado, espere ..."
 run gsettings set org.gnome.desktop.interface gtk-theme 'Material-Monokai-Metallian-Grey-Dark'
