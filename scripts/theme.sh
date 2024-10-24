@@ -28,6 +28,14 @@ message "Activando tema GTK Material-Monokai-Metallian generado en pantalla de i
 run gsettings set org.gnome.shell.extensions.user-theme name 'Material-Monokai-Metallian-Grey-Dark'
 errors "Error al activar el tema GTK Material-Monokai-Metallian en pantalla de inicio de sesión"
 
+message 'Configurando el paquete de iconos Papirus, espere ...'
+run gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+errors "Error al configurar el paquete de iconos Papirus"
+
+message 'Configurando el paquete de iconos Papirus Folders, espere ...'
+run papirus-folders -C white --theme 'Papirus-Dark'
+errors "Error configurar el paquete de iconos Papirus Folders"
+
 message "Estableciéndo configuración del logo de la pantalla de inicio de sesión, espere ..."
 run sudo cp -rf "${__DIR__}/config/ubuntu-logo.png" "/usr/share/plymouth/ubuntu-logo.png"
 errors "Error al establecer la configuración del logo de la pantalla de inicio de sesión"
