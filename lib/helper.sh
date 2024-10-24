@@ -242,7 +242,8 @@ function param_postgresql()
     if ! grep -qs "^$psqlparam" $3
     then
         message "Estableciendo parámetro para PostgreSQL, espere ..."
-        run sudo sed -r -i "s/^\s*#?$1\s*=/$psqlparam #/" $3
+        #run sudo sed -r -i "s/^\s*#?$1\s*=/$psqlparam #/" $3
+        sudo sed -r -i "s|^\s*#?$1\s*=|$psqlparam #|" "$3"
         errors "Error al establecer el parámetro ${psqlparam}"
     else
         message "Parámetro para PostgreSQL ya establecido"
