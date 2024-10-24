@@ -8,6 +8,14 @@
 
 # Name:Tema Material Monokai Metallian
 
+if [ ! -d "/root/.themes" ]; then
+    mkdir -p "/root/.themes"
+fi
+
+if [ ! -d "/usr/share/themes" ]; then
+    mkdir -p "/usr/share/themes"
+fi
+
 message "Configurando e instalando tema GTK Material Monokai Metallian, espere ..."
 run "${__DIR__}/theme/material-monokai-metallian/install.sh -n Material-Monokai-Metallian -t grey -c dark -l --size standard --tweaks submenu primary solid"
 errors "Error al configurar el tema GTK Plata"
