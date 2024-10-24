@@ -8,7 +8,7 @@
 
 # Lista de scripts a ejecutar.
 #SCRIPTS='postgresql packages extensions theme icons dconf terminal fonts directory wayland git'
-SCRIPTS='theme'
+SCRIPTS='packages'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -37,6 +37,9 @@ GOOGLE_CHROME_DEB_URL='https://dl.google.com/linux/direct/google-chrome-stable_c
 # Url de descarga directa de Visual Studio Code
 VS_CODE_DEB_URL='https://update.code.visualstudio.com/latest/linux-deb-x64/stable'
 
+# Url de descarga directa de Warp Terminal
+WARP_TERMINARL_DEB_URL='https://app.warp.dev/download?package=deb'
+
 # Url de descarga directa de GitHub CLI.
 GITHUB_CLI_URL='https://cli.github.com/packages'
 
@@ -44,7 +47,7 @@ GITHUB_CLI_URL='https://cli.github.com/packages'
 GITHUB_CLI_KEY='C99B11DEB97541F0'
 
 # Última versión de PostgreSQL
-POSTGRESQL_VERSION="17"
+POSTGRESQL_VERSION='17'
 
 # Directorio de configuración de PostgreSQL
 POSTGRESQL_CONFIG="/etc/postgresql/${POSTGRESQL_VERSION}/main/postgresql.conf"

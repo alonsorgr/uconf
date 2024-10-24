@@ -163,10 +163,10 @@ function apt_update()
 #   Actualiza e instala paquetes del sistema.
 {
     message "Actualizando la lista de paquetes instalados, espere ..."
-    run sudo apt-get -y update
+    run sudo apt-get -y update &> ${NULL}
     errors "Error al actualizar la lista de paquetes instalados"
     message "Actualizando paquetes instalados, espere ..."
-    run sudo apt-get -y upgrade
+    run sudo apt-get -y upgrade &> ${NULL}
     errors "Error al actualizar los paquetes instalados"
 }
 

@@ -43,17 +43,8 @@ echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -s
 errors "Error al activar el repositorio de PostgreSQL"
 
 message "Importando repositorio para PostgreSQL, espere ..."
-curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+run curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 errors "Error al importar el repositorio de PostgreSQL"
-
-message "Activando repositorio para AnyDesk, espere ..."
-anydesk_sources_list='/etc/apt/sources.list.d/anydesk-stable.list'
-echo "deb http://deb.anydesk.com/ all main" | sudo tee ${anydesk_sources_list} > /dev/null
-errors "Error al activar el repositorio de AnyDesk"
-
-message "Importando repositorio para AnyDesk, espere ..."
-curl -sL https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
-errors "Error al importar el repositorio de AnyDesk"
 
 apt_update
 
@@ -72,8 +63,6 @@ bar::stop
 
 deb_url_install "${GOOGLE_CHROME_DEB_URL}" "(google-chrome-estable)" "google-chrome-stable"
 deb_url_install "${VS_CODE_DEB_URL}" "(visual-studio-code)" "code"
-deb_url_install "${WARP_TERMINARL_DEB_URL}" "(warp-terminal)" "warp-terminal"
-
 deb_url_install "${WARP_TERMINARL_DEB_URL}" "(warp-terminal)" "warp-terminal"
 
 apt_install postgresql-${POSTGRESQL_VERSION}
