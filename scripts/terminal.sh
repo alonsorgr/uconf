@@ -24,3 +24,40 @@ errors "Error al instalar Warp Terminal como predeterminado del sistema"
 message "Estableciondo Warp Terminal como termninal predeterminado, espere ..."
 run sudo update-alternatives --quiet --set x-terminal-emulator /usr/bin/warp-terminal
 errors "Error al establecer Warp Terminal como predeterminado del sistema"
+
+config_zsh()
+{
+    if [ ! -d ~/.oh-my-zsh ]; then
+        message "Instalando Oh My ZSH..."
+        run curl -L http://install.ohmyz.sh | sh
+        errors "Error al descargar Oh My Zsh"
+    else
+        message "Oh My ZSH ya está instalado en el sistema"
+    fi
+    local DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    if [ ! -d $DEST ]; then
+        message "Instalando Zsh Syntax Highlighting..."
+        run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DEST
+        errors "Error al descargar Zsh Syntax Highlighting"
+    else
+        message "Actualizando Zsh Syntax Highlighting, espere ..."
+        (cd $DEST && git pull)
+    fi
+    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    if [ ! -d $DEST ]; then
+        message "Instalando tema Powerlevel10k, espere ..."
+        run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $DEST
+        errors "Error al descargar el tema Powerlevel10k"
+    else
+        message "Actualizando tema Powerlevel10k, espere ..."
+        (cd $DEST && run git pull)
+    fi
+    if grep $USER /etc/passwd | grep -vqs zsh; then
+        message "Instalando Zsh al usuario actual, espere ..."
+        run sudo chsh -s /bin/zsh $USER
+    else
+        message "Zsh ya asignado al usuario actual"
+    fi
+}
+
+config_zsh
