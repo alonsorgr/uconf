@@ -12,6 +12,5 @@ message "Creando directorio Repositorios en el directorio personal, espere ..."
 if [ ! -d "${HOME}/Repositorios" ]; then
     mkdir "${HOME}/Repositorios"
     run gio set "${HOME}/Repositorios" metadata::custom-icon 'file:///usr/share/icons/Papirus/64x64/places/folder-white-github.svg'
-    run gvfs-set-attribute "${HOME}/Repositorios" -t string metadata::custom-icon 'file:///usr/share/icons/Papirus/64x64/places/folder-white-github.svg'
     errors "Error al crear el directorio Web en el directorio personal"
 fi
