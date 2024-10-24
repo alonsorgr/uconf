@@ -128,7 +128,7 @@ fi
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR="vim"
+export EDITOR="code"
 # else
 #   export EDITOR='mvim'
 # fi
@@ -184,6 +184,13 @@ killjobs() {
 # alias tmux="tmux -2"
 
 # alias ls="ls --color=tty --group-directories-first"
+
+if [ -n "$(which lsd)" ]
+then
+    alias ls="lsd"
+    alias l="lsd --all --long"
+    alias ll="lsd --all"
+fi
 
 alias cd..="cd .."
 alias rm="rm -i"

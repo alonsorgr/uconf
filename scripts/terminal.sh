@@ -61,3 +61,7 @@ errors "Error al crear el enlace simbólico para la configuración del emulador 
 message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
 run backup_and_link .zshrc
 errors "Error al crear el enlace simbólico para la configuración de oh my zsh"
+
+message "Creando enlace simbólico para la configuración de lsd, espere ..."
+run backup_and_link lsd .config
+errors "Error al crear el enlace simbólico para la configuración de lsd"
