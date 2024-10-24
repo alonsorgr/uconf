@@ -8,6 +8,10 @@
 
 # Name:Instalación de tipografías
 
+if [ ! -d "${HOME}/.local/share/fonts" ]; then
+    mkdir -p "${HOME}/.local/share/fonts"
+fi
+
 bar::start
 for fonts in ${FONTS_LIST}; do
     message "Instalando tipografía ${fonts}, espere ..."
