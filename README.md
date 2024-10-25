@@ -91,7 +91,7 @@ OPCIONES:
   - nnn
   - nodejs
   - npm
-  - Oh My Zsh
+  - oh-my-zsh
   - papirus-folders
   - papirus-icon-theme
   - pkg-config
@@ -120,7 +120,7 @@ OPCIONES:
   - xsel
   - zsh
   
-- ### Navegadores
+- ### Navegador
     - [Google Chrome](https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb)
 
 - ### Editor de código
