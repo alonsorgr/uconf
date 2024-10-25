@@ -1,75 +1,146 @@
 # Configuración de Ubuntu
 
-Configuración personal del entorno de trabajo para Ubuntu 20.04 LTS
+Configuración personal del entorno de trabajo para Ubuntu 24.04.1 LTS
 
 ## Requisitos
 
-Instalación limpia de [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso?_ga=2.189067822.485950335.1599564112-573427031.1599564112)
+- Instalación limpia de [Ubuntu 24.04.1 LTS](https://releases.ubuntu.com/noble/ubuntu-24.04.1-desktop-amd64.iso)
 
-```sh
-$ sudo apt install git
+- Sistema de control de versiones Git
+
+```
+sudo apt install git
 ```
 ***
 ## Instalación
 
-```sh
-$ git clone --recursive https://github.com/alonsorgr/uconf.git ~/.uconf
-$ cd ~/.uconf
-$ ./setup.sh
+```
+git clone --recursive https://github.com/alonsorgr/uconf.git ~/.uconf
+```
+```
+cd ~/.uconf
+```
+```
+./setup.sh
 ```
 ***
 ## Ayuda
 
-```sh
-$ ./setup.sh --help # Muestra la ayuda
 ```
-```sh
-$ ./setup.sh --yes # Sí automático a las indicaciones
-```
-```sh
-$ ./setup.sh --verbose # Explicar lo que se está haciendo
-```
-```sh
-$ ./setup.sh --exit # Pregunta si desea seguir con el script si ocurre un error
+OPCIONES:
+
+--help      Muestra la ayuda
+--yes       Instalación automatizada (ejecuta todos los scripts sin preguntar al usuario)
+--verbose   Muestra la salida en forma detallada por pantalla
+--exit      Si hay un error, pregunta al usuario si desea seguir con la instalación 
+
 ```
 
-Se pueden combinar los parámetros
+### Ejemplo
 
-```sh
-$ ./setup.sh --yes --verbose --exit
-$ ./setup.sh --exit --verbose --yes
 ```
-***
+./setup.sh --yes --verbose --exit
+```
+
 ## Incluye
-- ### Script de personalización de [ricpelo/conf](https://github.com/ricpelo/conf)
-  - Información sobre el script de ```ricpelo/conf``` en [README.md](https://github.com/ricpelo/conf/blob/master/README.md)
-  - Se eliminan paquetes innecesarios para mi configuración
-  - Se inicializa el script de GitHub al final de la instalación de este script
 
-- ### Controladores teclado Logitech K290 para configuración de la tecla FN
-  - https://github.com/alonsorgr/k290-fnkeyctl
+- ### Paquetes de software
 
+  - anydesk
+  - at-spi2-core
+  - autoconf
+  - automake
+  - build-essential
+  - command-not-found
+  - dconf-editor
+  - ffmpeg
+  - feh
+  - file-roller
+  - filezilla
+  - findutils
+  - fonts-firacode
+  - fonts-freefont-ttf
+  - fonts-powerline
+  - fonts-roboto
+  - gedit-plugins
+  - gdm-settings
+  - gettext
+  - gimp
+  - glade
+  - gnome-boxes
+  - gnome-shell-extensions
+  - gnome-software
+  - gnome-themes-extra
+  - gnome-tweak-tool
+  - gparted
+  - grunt
+  - gtk2-engines-murrine
+  - gvfs
+  - inkscape
+  - jq
+  - libgdk-pixbuf2.0-dev
+  - libglib2.0-dev
+  - libglib2.0-dev-bin
+  - libgtk-3-dev
+  - libmarco-dev
+  - libnotify-bin
+  - libusb-1.0-0-dev
+  - libxml2-utils
+  - lsd
+  - ncurses-term
+  - nnn
+  - nodejs
+  - npm
+  - Oh My Zsh
+  - papirus-folders
+  - papirus-icon-theme
+  - pkg-config
+  - postgresql
+  - postgresql-client
+  - py3status
+  - python3
+  - ranger
+  - rofi
+  - ruby
+  - sakura
+  - sassc
+  - scrot
+  - sqlite3
+  - synaptic
+  - ttf-ancient-fonts
+  - tree
+  - unrar
+  - unzip
+  - usb-creator-gtk
+  - wget
+  - x11-utils
+  - x11-xserver-utils
+  - xcape
+  - xdg-user-dirs
+  - xsel
+  - zsh
+  
+- ### Navegadores
+    - [Google Chrome](https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb)
 
-- ### Tema GTK Plata personalizado
-  - https://gitlab.com/tista500/plata-theme
-  - Colores:
-    - ```selection='#bfbfbf'```
-    - ```accent='#ffffff'```
-    - ```suggestion='#cccccc'```
-- ### GDM
-  - Color de fondo de pantalla=```'#080808'```
-  - Desactivado WayLand
+- ### Editor de código
+    - [Visual Studio Code](https://update.code.visualstudio.com/latest/linux-deb-x64/stable)
 
+- ### Tema GTK Plata personalizado (Gnome-shell version = 46.0)
+  - [Material Monokai Metallian](https://github.com/alonsorgr/material-monokai-metallian)
 - ### Iconos Papirus
-  - https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+  - [Papirus Icons Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
 - ### Extensiones GNOME
-  - [Clipboard Indicator](https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator)
-  - [Dash To Panel](https://github.com/home-sweet-gnome/dash-to-panel)
-  - [Easy Screen Cast](https://github.com/EasyScreenCast/EasyScreenCast)
-  - [Screenshot Tool](https://github.com/OttoAllmendinger/gnome-shell-screenshot)
-  - [Simpler Off Menu](https://gitlab.com/K3rcus/simpler-off-menu)
-  - [User Themes](https://gitlab.gnome.org/GNOME/gnome-shell-extensions)
+  - [Alt-Tab](https://extensions.gnome.org/extension/97/coverflow-alt-tab/)
+  - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/)
+  - [Dash To Panel](https://extensions.gnome.org/extension/1160/dash-to-panel/)
+  - [Easy Screen Cast](https://extensions.gnome.org/extension/690/easyscreencast/)
+  - [LAN IP Address](https://extensions.gnome.org/extension/1762/lan-ip-address/)
+  - [IP Finder](https://extensions.gnome.org/extension/2983/ip-finder/)
+  - [No Overview](https://extensions.gnome.org/extension/4099/no-overview/)
+  - [Quick Settings Tweaker](https://extensions.gnome.org/extension/5446/quick-settings-tweaker)
+  - [User Avatar in Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
 
 - ### Terminal
   - Configuración de Sakura
@@ -80,15 +151,21 @@ $ ./setup.sh --exit --verbose --yes
 
 ### Habilitar bloqueo numérico al iniciar sesión
 
-```sh
-$ sudo -i
-$ xhost +SI:localuser:gdm
-$ su gdm -s /bin/bash
-$ gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'
+```
+sudo -i
+```
+```
+xhost +SI:localuser:gdm
+```
+```
+su gdm -s /bin/bash
+```
+```
+gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'
 ```
 
-### Habilitar o deshabilitar wayland en Ubuntu 20.04
+### Habilitar o deshabilitar wayland en Ubuntu 24.04.1
 
-```sh
-$ nano /etc/gdm3/custom.conf #WaylandEnable=false
+```
+nano /etc/gdm3/custom.conf #WaylandEnable=false
 ```
