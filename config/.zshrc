@@ -162,6 +162,7 @@ export LOCAL_GIT_DIRECTORY=/usr
 # export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
 
 eval `lesspipe`
+eval `dircolors ~/.dircolors`
 
 pingbg() {
     ping "$1" &

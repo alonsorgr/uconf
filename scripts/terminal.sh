@@ -16,42 +16,23 @@ message "Estableciondo Warp Terminal como termninal predeterminado, espere ..."
 run sudo update-alternatives --quiet --set x-terminal-emulator /usr/bin/warp-terminal
 errors "Error al establecer Warp Terminal como predeterminado del sistema"
 
-config_zsh()
-{
-    if [ ! -d ~/.oh-my-zsh ]; then
-        message "Instalando Oh My ZSH..."
-        run curl -L http://install.ohmyz.sh | sh
-        errors "Error al descargar Oh My Zsh"
-    else
-        message "Oh My ZSH ya está instalado en el sistema"
-    fi
-    local DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    if [ ! -d $DEST ]; then
-        message "Instalando Zsh Syntax Highlighting..."
-        run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DEST
-        errors "Error al descargar Zsh Syntax Highlighting"
-    else
-        message "Actualizando Zsh Syntax Highlighting, espere ..."
-        (cd $DEST && git pull)
-    fi
-    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-    if [ ! -d $DEST ]; then
-        message "Instalando tema Powerlevel10k, espere ..."
-        run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $DEST
-        errors "Error al descargar el tema Powerlevel10k"
-    else
-        message "Actualizando tema Powerlevel10k, espere ..."
-        (cd $DEST && run git pull)
-    fi
-    if grep $USER /etc/passwd | grep -vqs zsh; then
-        message "Instalando Zsh al usuario actual, espere ..."
-        run sudo chsh -s /bin/zsh $USER
-    else
-        message "Zsh ya asignado al usuario actual"
-    fi
-}
+message "Instalando Oh My Zsh en el sistema para el usuario actual, espere ..."
+run curl -L http://install.ohmyz.sh | sh
+errors "Error al instalar Oh My Zsh en el sistema para el usuario actual"
 
-config_zsh
+message "Instalando Oh My Zsh en el sistema para el usuario actual, espere ..."
+run curl -L http://install.ohmyz.sh | sh
+errors "Error al instalar Oh My Zsh en el sistema para el usuario actual"
+
+message "Instalando tema Powerlevel10k para Oh My Zsh en el sistema para el usuario actual, espere ..."
+run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k
+errors "Error al instalar tema Powerlevel10k para Oh My Zsh en el sistema para el usuario actual"
+
+apt_install zsh-syntax-highlighting
+
+message "Estableciendo la shell Zsh por defecto para el usuario actual, espere ..."
+run run sudo chsh -s /bin/zsh $USER
+errors "Error al establecer la shell Zsh por defecto para el usuario actual"
 
 mkdir -p ~/.config
 message "Creando enlace simbólico para la configuración del emulador de terminal sakura, espere ..."
@@ -65,3 +46,7 @@ errors "Error al crear el enlace simbólico para la configuración de oh my zsh"
 message "Creando enlace simbólico para la configuración de lsd, espere ..."
 run backup_and_link lsd .config
 errors "Error al crear el enlace simbólico para la configuración de lsd"
+
+message "Creando enlace simbólico para la configuración de dircolors, espere ..."
+run backup_and_link .dircolors
+errors "Error al crear el enlace simbólico para la configuración de dircolors"
