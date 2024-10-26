@@ -47,7 +47,6 @@ OPCIONES:
 - ### Paquetes de software
 
   - anydesk
-  - at-spi2-core
   - autoconf
   - automake
   - build-essential
@@ -62,20 +61,16 @@ OPCIONES:
   - fonts-freefont-ttf
   - fonts-powerline
   - fonts-roboto
-  - gedit-plugins
   - gdm-settings
   - gettext
   - gimp
   - glade
   - gnome-boxes
   - gnome-shell-extensions
-  - gnome-software
   - gnome-themes-extra
   - gnome-tweak-tool
   - gparted
-  - grunt
   - gtk2-engines-murrine
-  - gvfs
   - inkscape
   - jq
   - libgdk-pixbuf2.0-dev
@@ -87,10 +82,7 @@ OPCIONES:
   - libusb-1.0-0-dev
   - libxml2-utils
   - lsd
-  - ncurses-term
-  - nnn
   - nodejs
-  - npm
   - oh-my-zsh
   - papirus-folders
   - papirus-icon-theme
@@ -99,12 +91,8 @@ OPCIONES:
   - postgresql-client
   - py3status
   - python3
-  - ranger
-  - rofi
-  - ruby
   - sakura
   - sassc
-  - scrot
   - sqlite3
   - synaptic
   - ttf-ancient-fonts
@@ -112,12 +100,6 @@ OPCIONES:
   - unrar
   - unzip
   - usb-creator-gtk
-  - wget
-  - x11-utils
-  - x11-xserver-utils
-  - xcape
-  - xdg-user-dirs
-  - xsel
   - zsh
   
 - ### Navegador
