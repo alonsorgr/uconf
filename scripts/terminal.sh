@@ -39,6 +39,10 @@ message "Creando enlace simbólico para la configuración del emulador de termin
 run backup_and_link sakura .config
 errors "Error al crear el enlace simbólico para la configuración del emulador de terminal sakura"
 
+message "Creando enlace simbólico para la configuración de Powerlevel10k, espere ..."
+run backup_and_link .p10k.zsh
+errors "Error al crear el enlace simbólico para la configuración de Powerlevel10k"
+
 message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
 run backup_and_link .zshrc
 errors "Error al crear el enlace simbólico para la configuración de oh my zsh"
