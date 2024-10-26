@@ -47,6 +47,14 @@ message "Importando repositorio para AnyDesk, espere ..."
 curl -sL https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
 errors "Error al importar el repositorio de AnyDesk"
 
+message "Instalando Node Version Manager (nvm), espere ..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh &> ${NULL} | bash &> ${NULL}
+errors "Error al instalar Node Version Manager (nvm)"
+
+message "Instalando NodeJs versión 20, espere ..."
+run nvm install 20
+errors "Error al instalar NodeJs versión 20"
+
 apt_update
 
 bar::start
