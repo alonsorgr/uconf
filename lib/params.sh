@@ -7,7 +7,8 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages extensions theme dconf terminal fonts directory git'
+#SCRIPTS='packages extensions theme dconf terminal fonts directory git'
+SCRIPTS='git'
 
 # Redireccion a null.
 NULL='/dev/null'
@@ -56,6 +57,12 @@ GNOME_EXTENSIONS_LIST=$(cat ${__DIR__}/config/gnome-extensions.cfg)
 
 # Número de extensiones de gnome a instalar
 GNOME_EXTENSIONS_COUNT=$(echo ${GNOME_EXTENSIONS_LIST} | wc -w)
+
+# Url base para descarga de extensiones de Gnome en su versión 46
+GNOME_EXTENSIONS_BASEURL='https://extensions.gnome.org/api/v1/extensions/'
+
+# Ruta de destino de extensiones de Gnome
+GNOME_EXTENSIONS_BASEPATH="${HOME}/.local/share/gnome-shell/extensions/"
 
 # Lista de tipografías a instalar
 FONTS_LIST="fira-code input-mono menlo mononoki nerd-fonts"
