@@ -42,7 +42,6 @@ OPCIONES:
 ./setup.sh --yes --verbose --exit
 ```
 
-***
 ## Incluye
 
 - ### Paquetes de software
@@ -109,10 +108,9 @@ OPCIONES:
 - ### Editor de código
     - [Visual Studio Code](https://update.code.visualstudio.com/latest/linux-deb-x64/stable)
 
-- ### Tema GTK personalizado (Gnome-shell version = 46.0)
+- ### Tema GTK Plata personalizado (Gnome-shell version = 46.0)
   - [Material Monokai Metallian](https://github.com/alonsorgr/material-monokai-metallian)
-
-- ### Tema para iconos del sistema
+- ### Iconos Papirus
   - [Papirus Icons Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
 - ### Extensiones GNOME
@@ -128,7 +126,7 @@ OPCIONES:
 
 - ### Terminal
   - Configuración de Sakura
-  - Confiiguración de Oh My Zsh
+  - Confiiguración de Oh-My-Zsh
 ---
 
 ## Consejos
