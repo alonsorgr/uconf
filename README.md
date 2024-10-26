@@ -42,6 +42,7 @@ OPCIONES:
 ./setup.sh --yes --verbose --exit
 ```
 
+***
 ## Incluye
 
 - ### Paquetes de software
