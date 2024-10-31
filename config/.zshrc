@@ -233,7 +233,8 @@ alias rundev="npm run dev &"
 alias stopdev="kill %1"
 alias ping="pingbg"
 alias termcolors="terminal_colors"
-alias nautilus_root="nautilus admin:/"
+alias nautilusadmin="nautilus admin:/"
+alias ip="ip -c a"
 
 bindkey -v
 export KEYTIMEOUT=1
