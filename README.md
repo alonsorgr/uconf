@@ -117,6 +117,7 @@ OPCIONES:
   - [Alt-Tab](https://extensions.gnome.org/extension/97/coverflow-alt-tab/)
   - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/)
   - [Dash To Panel](https://extensions.gnome.org/extension/1160/dash-to-panel/)
+  - [Date Menu Formatter](https://extensions.gnome.org/extension/4655/date-menu-formatter/)
   - [LAN IP Address](https://extensions.gnome.org/extension/1762/lan-ip-address/)
   - [IP Finder](https://extensions.gnome.org/extension/2983/ip-finder/)
   - [No Overview](https://extensions.gnome.org/extension/4099/no-overview/)
