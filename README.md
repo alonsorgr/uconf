@@ -50,10 +50,10 @@ OPCIONES:
   - autoconf
   - automake
   - build-essential
+  - celluloid
   - command-not-found
   - dconf-editor
   - ffmpeg
-  - feh
   - file-roller
   - filezilla
   - findutils
@@ -71,6 +71,7 @@ OPCIONES:
   - gnome-tweak-tool
   - gparted
   - gtk2-engines-murrine
+  - gthumb
   - inkscape
   - jq
   - libgdk-pixbuf2.0-dev
@@ -108,7 +109,7 @@ OPCIONES:
 - ### Editor de código
     - [Visual Studio Code](https://update.code.visualstudio.com/latest/linux-deb-x64/stable)
 
-- ### Tema GTK Plata personalizado (Gnome-shell version = 46.0)
+- ### Tema GTK personalizado (Gnome-shell version = 46.0)
   - [Material Monokai Metallian](https://github.com/alonsorgr/material-monokai-metallian)
 - ### Iconos Papirus
   - [Papirus Icons Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
@@ -117,7 +118,6 @@ OPCIONES:
   - [Alt-Tab](https://extensions.gnome.org/extension/97/coverflow-alt-tab/)
   - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/)
   - [Dash To Panel](https://extensions.gnome.org/extension/1160/dash-to-panel/)
-  - [Easy Screen Cast](https://extensions.gnome.org/extension/690/easyscreencast/)
   - [LAN IP Address](https://extensions.gnome.org/extension/1762/lan-ip-address/)
   - [IP Finder](https://extensions.gnome.org/extension/2983/ip-finder/)
   - [No Overview](https://extensions.gnome.org/extension/4099/no-overview/)
@@ -126,7 +126,7 @@ OPCIONES:
 
 - ### Terminal
   - Configuración de Sakura
-  - Confiiguración de Oh-My-Zsh
+  - Confiiguración de Oh My Zsh
 ---
 
 ## Consejos
