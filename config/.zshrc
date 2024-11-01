@@ -193,7 +193,7 @@ killjobs() {
     kill $(jobs -p) 2>/dev/null
 }
 
-terminal_colors() {
+termcolors() {
     for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
