@@ -92,7 +92,6 @@ OPCIONES:
   - postgresql-client
   - py3status
   - python3
-  - sakura
   - sassc
   - sqlite3
   - synaptic
