@@ -125,7 +125,6 @@ OPCIONES:
   - [User Avatar in Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
 
 - ### Terminal
-  - Configuración de Sakura
   - Confiiguración de Oh My Zsh
 ---
 
