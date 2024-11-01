@@ -242,25 +242,9 @@ function param_postgresql()
     if ! grep -qs "^$psqlparam" $3
     then
         message "Estableciendo parámetro para PostgreSQL, espere ..."
-        #run sudo sed -r -i "s/^\s*#?$1\s*=/$psqlparam #/" $3
         sudo sed -r -i "s|^\s*#?$1\s*=|$psqlparam #|" "$3"
         errors "Error al establecer el parámetro ${psqlparam}"
     else
         message "Parámetro para PostgreSQL ya establecido"
     fi
-}
-
-function clone() 
-###
-#   Clona un repositorio.
-#   @param $1   Url del repositorio.
-#   @param $2   Destino del clonado del repositorio.
-#   @param $3   Nombre del repositorio.
-{
-    message "Eliminando el repositorio anterior de $3, espere ..."
-    [ -d "$2" ] && run rm -rf "$2"
-    
-    message "Clonando repositorio $3, espere ..."
-    run git clone --recursive "$1" "$2"
-    errors "Error al clonar el repositorio $3"
 }
