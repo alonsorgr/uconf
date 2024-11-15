@@ -7,7 +7,8 @@
 ##
 
 # Lista de scripts a ejecutar.
-SCRIPTS='packages extensions theme dconf terminal fonts directory git'
+#SCRIPTS='packages extensions theme dconf terminal fonts directory git'
+SCRIPTS='extensions'
 
 # Redireccion a null.
 NULL='/dev/null'
