@@ -14,3 +14,18 @@ if [ ! -d "${HOME}/Repositorios" ]; then
     run gio set "${HOME}/Repositorios" metadata::custom-icon 'file:///usr/share/icons/Papirus/64x64/places/folder-white-github.svg'
     errors "Error al crear el directorio Web en el directorio personal"
 fi
+
+message "Configurando accesos directos, espere ..."
+if [ -f "/usr/share/applications/io.github.celluloid_player.Celluloid.desktop" ]; then
+    sudo sed -i 's/Name\[es\]=Celuloide/Name\[es\]=Vídeos/g' "/usr/share/applications/io.github.celluloid_player.Celluloid.desktop"
+fi
+if [ -f "/usr/share/applications/org.gnome.Rhythmbox3.desktop" ]; then
+    sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.desktop"
+    sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop"
+fi
+if [ -f "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop" ]; then
+    sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop"
+fi
+if [ -f "/usr/share/applications/easytag.desktop" ]; then
+    sudo sed -i 's/Name\[es\]=EasyTAG/Name\[es\]=MP3 Tag/g' "/usr/share/applications/easytag.desktop"
+fi
