@@ -8,13 +8,13 @@
 
 # Name:Tema Material Monokai Metallian
 
-if [ ! -d "/root/.themes" ]; then
-    sudo mkdir -p "/root/.themes"
-fi
-
 if [ ! -d "/usr/share/themes" ]; then
     sudo mkdir -p "/usr/share/themes"
 fi
+
+message "Activando modo oscuro, espere ..."
+run gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+errors "Error al activar el modo oscuro"
 
 message "Configurando e instalando tema GTK Material Monokai Metallian, espere ..."
 run "${__DIR__}/theme/material-monokai-metallian/install.sh -n Material-Monokai-Metallian -t grey -c dark -l --size standard --tweaks submenu primary solid"
@@ -23,14 +23,6 @@ errors "Error al configurar el tema GTK Plata"
 message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
 run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/usr/share/themes" 
 errors "Error al instalar tema GTK Material Monokai Metallian para todos los usuarios"
-
-message "Instalando tema GTK Material Monokai Metallian para root, espere ..."
-run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/root/.themes" 
-errors "Error al instalar tema GTK Material Monokai Metallian para root"
-
-message "Creando enlace Libadwaita para tema GTK Material Monokai Metallian para root, espere ..."
-run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0" "/root/.config" 
-errors "Error al crear el enlace Libadwaita para tema GTK Material Monokai Metallian para root"
 
 message "Activando tema GTK Material-Monokai-Metallian generado, espere ..."
 run gsettings set org.gnome.desktop.interface gtk-theme 'Material-Monokai-Metallian-Grey-Dark'
@@ -67,3 +59,7 @@ errors "Error al establecer la configuración de Plymouth"
 message "Estableciéndo configuración del logo de Plymouth, espere ..."
 run sudo cp -rf "${__DIR__}/config/ubuntu-logo.png" "/usr/share/plymouth/themes/spinner/bgrt-fallback.png"
 errors "Error al establecer la configuración del logo de Plymouth"
+
+message "Instalando tema para Gnome Text Editor, espere ..."
+run sudo cp -rf "${__DIR__}/config/material-metallian-dark.xml" "/usr/share/gnome-text-editor/styles/material-metallian-dark.xml"
+errors "Error al instalar el tema para Gnome Text Editor"

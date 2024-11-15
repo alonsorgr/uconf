@@ -61,7 +61,7 @@ GNOME_EXTENSIONS_COUNT=$(echo ${GNOME_EXTENSIONS_LIST} | wc -w)
 GNOME_EXTENSIONS_BASEURL='https://extensions.gnome.org/api/v1/extensions/'
 
 # Ruta de destino de extensiones de Gnome
-GNOME_EXTENSIONS_BASEPATH="${HOME}/.local/share/gnome-shell/extensions/"
+GNOME_EXTENSIONS_BASEPATH="$HOME/.local/share/gnome-shell/extensions/"
 
 # Lista de tipografías a instalar
 FONTS_LIST="fira-code input-mono menlo mononoki nerd-fonts"
