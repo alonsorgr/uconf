@@ -122,7 +122,7 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found composer history-substring-search z)
+plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
 
 # User configuration
 

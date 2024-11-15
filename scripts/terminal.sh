@@ -28,6 +28,10 @@ message "Instalando tema Powerlevel10k para Oh My Zsh en el sistema para el usua
 run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 errors "Error al instalar tema Powerlevel10k para Oh My Zsh en el sistema para el usuario actual"
 
+message "Instalando zsh Syntax Highlighting, espere ..."
+run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+errors "Error al instalar zsh Syntax Highlighting"
+
 [ ! -d "${HOME}/.config" ] && mkdir -p "${HOME}/.config"
 
 message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
