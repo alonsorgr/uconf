@@ -32,6 +32,10 @@ message "Instalando zsh Syntax Highlighting, espere ..."
 run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 errors "Error al instalar zsh Syntax Highlighting"
 
+message "Instalando zsh-bat, espere ..."
+run git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-bat
+errors "Error al instalar zsh-bat"
+
 [ ! -d "${HOME}/.config" ] && mkdir -p "${HOME}/.config"
 [ ! -d "${HOME}/.local/share/warp-terminal/themes" ] && mkdir -p "${HOME}/.local/share/warp-terminal/themes"
 [ ! -d "${HOME}/.local/bin" ] && mkdir -p "${HOME}/.local/bin"
