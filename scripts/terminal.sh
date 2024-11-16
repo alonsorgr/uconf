@@ -33,6 +33,7 @@ run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUS
 errors "Error al instalar zsh Syntax Highlighting"
 
 [ ! -d "${HOME}/.config" ] && mkdir -p "${HOME}/.config"
+[ ! -d "${HOME}/.local/share/warp-terminal/themes" ] && mkdir -p "${HOME}/.local/share/warp-terminal/themes"
 
 message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
 run backup_and_link .zshrc
@@ -49,3 +50,7 @@ errors "Error al crear el enlace simbólico para la configuración de dircolors"
 message "Creando enlace simbólico para la configuración de Warp Terminal, espere ..."
 run backup_and_link warp-terminal .config
 errors "Error al crear el enlace simbólico para la configuración de Warp Terminal"
+
+message "Creando enlace simbólico para el tema Material Monokai Metallian de Warp Terminal, espere ..."
+run backup_and_link material-monokai-metallian.yaml .local/share/warp-terminal/themes
+errors "Error al crear el enlace simbólico para el tema Material Monokai Metallian de Warp Terminal"
