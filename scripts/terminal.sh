@@ -34,6 +34,7 @@ errors "Error al instalar zsh Syntax Highlighting"
 
 [ ! -d "${HOME}/.config" ] && mkdir -p "${HOME}/.config"
 [ ! -d "${HOME}/.local/share/warp-terminal/themes" ] && mkdir -p "${HOME}/.local/share/warp-terminal/themes"
+[ ! -d "${HOME}/.local/bin" ] && mkdir -p "${HOME}/.local/bin"
 
 message "Creando enlace simbólico para la configuración de oh my zsh, espere ..."
 run backup_and_link .zshrc
@@ -54,3 +55,7 @@ errors "Error al crear el enlace simbólico para la configuración de Warp Termi
 message "Creando enlace simbólico para el tema Material Monokai Metallian de Warp Terminal, espere ..."
 run backup_and_link material-monokai-metallian.yaml .local/share/warp-terminal/themes
 errors "Error al crear el enlace simbólico para el tema Material Monokai Metallian de Warp Terminal"
+
+message "Creando ejecutable para bat, espere ..."
+run ln -s /usr/bin/batcat ${HOME}/.local/bin/bat
+errors "Error al crear el ejecutable para bat"

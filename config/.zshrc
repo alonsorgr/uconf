@@ -122,7 +122,7 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
+plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting zsh-bat)
 
 # User configuration
 
@@ -197,6 +197,10 @@ termcolors() {
     for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
+catbat() {
+    bat "$1"
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -235,6 +239,7 @@ alias ping="pingbg"
 alias termcolors="terminal_colors"
 alias nautilusadmin="nautilus admin:/"
 alias ip="ip -c a"
+alias cat="catbat"
 
 bindkey -v
 export KEYTIMEOUT=1
