@@ -117,7 +117,8 @@ OPCIONES:
   - [Papirus Icons Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
 - ### Extensiones GNOME
-  - ℹ️ La instalación de las extensiones de gnome están administradas por [Gnome Extensions CLI](https://github.com/essembeh/gnome-extensions-cli)
+  - ℹ️ La instalación de las extensiones de Gnome están administradas por [Gnome Extensions CLI](https://github.com/essembeh/gnome-extensions-cli)
+  
     - [Alt-Tab](https://extensions.gnome.org/extension/97/coverflow-alt-tab/)
     - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/)
     - [Dash To Panel](https://extensions.gnome.org/extension/1160/dash-to-panel/)
