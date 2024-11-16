@@ -4,7 +4,7 @@ Configuración personal del entorno de trabajo para Ubuntu 24.04.1 LTS
 
 ## Requisitos
 
-- Instalación limpia de [Ubuntu 24.04.1 LTS](https://releases.ubuntu.com/noble/ubuntu-24.04.1-desktop-amd64.iso)
+- Instalación sin modificaciones de [Ubuntu 24.04.1 LTS](https://releases.ubuntu.com/noble/ubuntu-24.04.1-desktop-amd64.iso)
 
 - Sistema de control de versiones Git
 
