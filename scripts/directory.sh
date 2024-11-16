@@ -21,7 +21,6 @@ if [ -f "/usr/share/applications/io.github.celluloid_player.Celluloid.desktop" ]
 fi
 if [ -f "/usr/share/applications/org.gnome.Rhythmbox3.desktop" ]; then
     sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.desktop"
-    sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop"
 fi
 if [ -f "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop" ]; then
     sudo sed -i 's/Name=Rhythmbox/Name=Música/g' "/usr/share/applications/org.gnome.Rhythmbox3.device.desktop"
