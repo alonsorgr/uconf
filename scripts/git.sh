@@ -41,6 +41,6 @@ else
     errors "Error al configurar el correo electrónico para GitHub"
 
     message "Configurando su Token de Acceso Personal (PAT) de GitHub, espere ..."
-    git config --global github.token ${github_token}
+    git config --global github.token "${github_token}"
     errors "Error al configurar Token de Acceso Personal (PAT) para GitHub"
 fi
