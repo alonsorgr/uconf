@@ -74,7 +74,6 @@ OPCIONES:
   - gnome-tweak-tool
   - gparted
   - gtk2-engines-murrine
-  - gthumb
   - inkscape
   - jq
   - libgdk-pixbuf2.0-dev
