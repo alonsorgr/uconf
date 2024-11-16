@@ -67,6 +67,34 @@ function yes_no_message()
     fi
 }
 
+read_data() 
+###
+#   Pide un dato por pantalla al usuario.
+#   @param $1     Mensaje que se muestra por pantalla al usuario.
+{
+    local input
+    while true; do
+        read -p "$1: " input
+        if [[ -z "$input" ]]; then
+            while true; do
+                read -p "No se ha introducido ningún dato. ¿Deseas intentarlo de nuevo? (S/n): " choice
+                case "$choice" in
+                    [Ss]* )
+                        break
+                        ;;
+                    [Nn]* )
+                        return 1
+                        ;;
+                    * )
+                esac
+            done
+        else
+            echo "$input"
+            return 0
+        fi
+    done
+}
+
 function errors()
 ###
 #   Comprueba si ocurrió algún error al ejecutar el comando enterior.
