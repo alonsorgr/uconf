@@ -80,10 +80,8 @@ function read_data()
             while true; do
                 read -p "No se ha introducido ningún dato. ¿Deseas intentarlo de nuevo? (S/n): " choice
                 case "${choice}" in
-                    [Ss]* )
-                        break;;
-                    [Nn]* )
-                        return 1;;
+                    [Ss]* ) break;;
+                    [Nn]* ) return 1;;
                     * )
                 esac
             done
