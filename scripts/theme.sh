@@ -32,9 +32,9 @@ message "Creando enlace simbólico de los assets para libadwaita, espere ..."
 run ln -sf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0"
 errors "Error al crear el enlace simbólico de los assets para libadwaita"
 
-message "Activando modo oscuro, espere ..."
+message "Activando modo oscuro para el entorno de escritorio, espere ..."
 run gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-errors "Error al activar el modo oscuro"
+errors "Error al activar el modo oscuro para el entorno de escritorio"
 
 message "Activando tema GTK Material-Monokai-Metallian generado, espere ..."
 run gsettings set org.gnome.desktop.interface gtk-theme 'Material-Monokai-Metallian-Grey-Dark'
