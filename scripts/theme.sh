@@ -13,23 +13,23 @@
 [ ! -d "/usr/share/themes" ] && sudo mkdir -p "/usr/share/themes"
 
 message "Instalando tema GTK Material Monokai Metallian para el usuario actual, espere ..."
-run unzip "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" "${HOME}/.themes"
+run unzip -o -q "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" -d "${HOME}/.themes"
 errors "Error al instalar el tema GTK Material Monokai Metallian para el usuario actual"
 
 message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
-run sudo unzip "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" "/usr/share/themes"
+run sudo unzip -o -q "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" -d "/usr/share/themes"
 errors "Error al instalar el tema GTK Material Monokai Metallian para todos los usuarios"
 
 message "Creando enlace simbólico de gtk.css para libadwaita, espere ..."
-run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0"
+run ln -sf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0"
 errors "Error al crear el enlace simbólico de gtk.css para libadwaita"
 
 message "Creando enlace simbólico de gtk-dark.css para libadwaita, espere ..."
-run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0"
+run ln -sf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0"
 errors "Error al crear el enlace simbólico de gtk-dark.css para libadwaita"
 
 message "Creando enlace simbólico de los assets para libadwaita, espere ..."
-run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0"
+run ln -sf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0"
 errors "Error al crear el enlace simbólico de los assets para libadwaita"
 
 message "Activando modo oscuro, espere ..."
@@ -61,7 +61,7 @@ run gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/${
 errors "Error al establecer el fondo de escritorio"
 
 message "Estableciéndo el fondo de salva pantallas, espere ..."
-run gsettings set org.gnome.desktop.screensaver picture-uri-dark "file:///home/${USER}/.uconf/config/screensaver.jpg"
+run gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/${USER}/.uconf/config/screensaver.jpg"
 errors "Error al establecer el fondo de salva pantallas"
 
 message "Estableciéndo configuración de Plymouth, espere ..."
