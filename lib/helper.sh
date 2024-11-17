@@ -53,12 +53,13 @@ function yes_no_message()
 #   @param $2     Texto que se mostrará en el mensaje.
 #   @param $3     Sí automático a las indicaciones; asumir "sí" como respuesta.
 {
+    local input
     if [[ "${yes}" == '-y' ]]; then
         $1
     else
         while true; do
-            read -p "$2" result
-            case ${result} in
+            read -p "$2" input
+            case ${input} in
                 [Ss]* ) $1; break;;
                 [Nn]* ) break;;
                 * ) echo "Por favor, conteste sí o no (S/n)";;
@@ -67,7 +68,7 @@ function yes_no_message()
     fi
 }
 
-read_data() 
+function read_data() 
 ###
 #   Pide un dato por pantalla al usuario.
 #   @param $1     Mensaje que se muestra por pantalla al usuario.
@@ -75,21 +76,19 @@ read_data()
     local input
     while true; do
         read -p "$1: " input
-        if [[ -z "$input" ]]; then
+        if [[ -z "${input}" ]]; then
             while true; do
                 read -p "No se ha introducido ningún dato. ¿Deseas intentarlo de nuevo? (S/n): " choice
-                case "$choice" in
+                case "${choice}" in
                     [Ss]* )
-                        break
-                        ;;
+                        break;;
                     [Nn]* )
-                        return 1
-                        ;;
+                        return 1;;
                     * )
                 esac
             done
         else
-            echo "$input"
+            echo "${input}"
             return 0
         fi
     done
