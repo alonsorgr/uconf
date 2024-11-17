@@ -41,9 +41,6 @@ source "${__DIR__}/lib/autoload.sh"
 # Comprueba si el script se está ejecutando desde el directorio base.
 check_directory
 
-# Actualiza los módulos integrados en el script
-git_module_update
-
 function init()
 ##
 #   Inicializa la ejecución de los scripts

@@ -8,21 +8,33 @@
 
 # Name:Tema Material Monokai Metallian
 
-if [ ! -d "/usr/share/themes" ]; then
-    sudo mkdir -p "/usr/share/themes"
-fi
+[ ! -d "${HOME}/.themes" ] && sudo mkdir -p "${HOME}/.themes"
+[ ! -d "${HOME}/.config/gtk-4.0" ] && sudo mkdir -p "${HOME}/.config/gtk-4.0"
+[ ! -d "/usr/share/themes" ] && sudo mkdir -p "/usr/share/themes"
+
+message "Instalando tema GTK Material Monokai Metallian para el usuario actual, espere ..."
+run unzip "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" "${HOME}/.themes"
+errors "Error al instalar el tema GTK Material Monokai Metallian para el usuario actual"
+
+message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
+run sudo unzip "${__DIR__}/theme/material-monokai-metallian-grey-dark.zip" "/usr/share/themes"
+errors "Error al instalar el tema GTK Material Monokai Metallian para todos los usuarios"
+
+message "Creando enlace simbólico de gtk.css para libadwaita, espere ..."
+run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0"
+errors "Error al crear el enlace simbólico de gtk.css para libadwaita"
+
+message "Creando enlace simbólico de gtk-dark.css para libadwaita, espere ..."
+run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0"
+errors "Error al crear el enlace simbólico de gtk-dark.css para libadwaita"
+
+message "Creando enlace simbólico de los assets para libadwaita, espere ..."
+run ln -s "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0"
+errors "Error al crear el enlace simbólico de los assets para libadwaita"
 
 message "Activando modo oscuro, espere ..."
 run gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 errors "Error al activar el modo oscuro"
-
-message "Configurando e instalando tema GTK Material Monokai Metallian, espere ..."
-run "${__DIR__}/theme/material-monokai-metallian/install.sh -n Material-Monokai-Metallian -t grey -c dark -l --size standard --tweaks submenu primary solid"
-errors "Error al configurar el tema GTK Plata"
-
-message "Instalando tema GTK Material Monokai Metallian para todos los usuarios, espere ..."
-run sudo cp -rf "${HOME}/.themes/Material-Monokai-Metallian-Grey-Dark" "/usr/share/themes" 
-errors "Error al instalar tema GTK Material Monokai Metallian para todos los usuarios"
 
 message "Activando tema GTK Material-Monokai-Metallian generado, espere ..."
 run gsettings set org.gnome.desktop.interface gtk-theme 'Material-Monokai-Metallian-Grey-Dark'
@@ -45,11 +57,11 @@ run sudo cp -rf "${__DIR__}/config/ubuntu-logo.png" "/usr/share/plymouth/ubuntu-
 errors "Error al establecer la configuración del logo de la pantalla de inicio de sesión"
 
 message "Estableciéndo el fondo de escritorio, espere ..."
-run gsettings set org.gnome.desktop.background picture-uri "file:///home/${USER}/.uconf/config/background.jpg"
+run gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/${USER}/.uconf/config/background.jpg"
 errors "Error al establecer el fondo de escritorio"
 
 message "Estableciéndo el fondo de salva pantallas, espere ..."
-run gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/${USER}/.uconf/config/screensaver.jpg"
+run gsettings set org.gnome.desktop.screensaver picture-uri-dark "file:///home/${USER}/.uconf/config/screensaver.jpg"
 errors "Error al establecer el fondo de salva pantallas"
 
 message "Estableciéndo configuración de Plymouth, espere ..."
@@ -61,5 +73,5 @@ run sudo cp -rf "${__DIR__}/config/ubuntu-logo.png" "/usr/share/plymouth/themes/
 errors "Error al establecer la configuración del logo de Plymouth"
 
 message "Instalando tema para Gnome Text Editor, espere ..."
-run sudo cp -rf "${__DIR__}/config/material-metallian-dark.xml" "/usr/share/gnome-text-editor/styles/material-metallian-dark.xml"
+run sudo cp -rf "${__DIR__}/config/material-monokai-metallian.xml" "/usr/share/gnome-text-editor/styles/material-monokai-metallian.xml"
 errors "Error al instalar el tema para Gnome Text Editor"
