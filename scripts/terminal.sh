@@ -25,7 +25,7 @@ run curl -L http://install.ohmyz.sh | sh
 errors "Error al instalar Oh My Zsh en el sistema para el usuario actual"
 
 message "Instalando tema Powerlevel10k para Oh My Zsh en el sistema para el usuario actual, espere ..."
-run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k
 errors "Error al instalar tema Powerlevel10k para Oh My Zsh en el sistema para el usuario actual"
 
 message "Instalando zsh Syntax Highlighting, espere ..."
