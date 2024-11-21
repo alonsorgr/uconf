@@ -186,19 +186,33 @@ eval `lesspipe`
 eval `dircolors ~/.dircolors`
 
 pingbg() {
-    ping "$1" &
+    if [ "$2" != "-b" ]; then
+        ping "$1"
+    else
+        ping "$1" &
+    fi
 }
 
 killjobs() {
-    kill $(jobs -p) 2>/dev/null
-}
-
-termcolors() {
-    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+    if jobs -p > /dev/null; then
+        kill $(jobs -p) &>/dev/null
+    fi
 }
 
 catbat() {
     bat "$1"
+}
+
+system_update() {
+    sudo -v && (sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y) &
+    PID=$!
+    wait $PID
+    EXIT_CODE=$?
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo -e "\033[1;31m\033[5;31m\nLas actualizaciones no se aplicaron correctamente.\033[0m"
+    else
+        echo -e "\033[1;32m\nLas actualizaciones se aplicaron correctamente.\033[0m"
+    fi
 }
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -232,11 +246,10 @@ alias rmf="rm -rf"
 alias glg="git log"
 alias apagar="init 0"
 alias reiniciar="init 6"
-alias upd="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y"
+alias upd="system_update"
 alias rundev="npm run dev &"
 alias stopdev="kill %1"
 alias ping="pingbg"
-alias termcolors="terminal_colors"
 alias nautilusadmin="nautilus admin:/"
 alias ip="ip -c a"
 alias cat="catbat"
